@@ -18,7 +18,7 @@ public class Main {
         do {
             choice = userInput.nextInt();
             if (choice  < 0 || choice  > 3){
-                System.out.println("Invalid");
+                System.out.println("Invalid choice");
             }
 
         } while (choice < 0 || choice > 3);
