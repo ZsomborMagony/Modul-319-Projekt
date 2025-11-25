@@ -11,7 +11,7 @@ public class dice {
             case 4 -> result = random.nextInt(1, 5);
             case 6 -> result = random.nextInt(1, 7);
             case 8 -> result = random.nextInt(1, 9);
-            case 20 -> result = random.nextInt(1, 20);
+            case 20 -> result = random.nextInt(1, 21);
             default -> result = 1;
         }
         return result;
