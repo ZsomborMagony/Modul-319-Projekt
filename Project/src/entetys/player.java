@@ -16,12 +16,12 @@ public class player {
     }
 
     public class playerStats {
-        public static int playerStrength;
-        public static int playerDexterity;
-        public static int playerConstitution;
-        public static int playerIntelligence;
-        public static int playerWisdom;
-        public static int playerCharisma;
+        public static int playerStrength=8;
+        public static int playerDexterity=8;
+        public static int playerConstitution=8;
+        public static int playerIntelligence=8;
+        public static int playerWisdom=8;
+        public static int playerCharisma=8;
     }
 }
 

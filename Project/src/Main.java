@@ -41,7 +41,18 @@ public class Main {
                 break;
             }
         } while (choice != 2);
-
+        if (choice==1) {
+            int attributepoints=27;
+            System.out.println("you have a max of  attribute points you can distribute them now");
+            System.out.println("lets start with Strength");
+            choice=userInput.nextInt();
+            if (choice < 9) {
+                attributepoints-=choice;
+                player.playerStats.playerStrength = player.playerStats.playerStrength + choice;
+            }else {
+                System.out.println("you cant put more than 8 points into one attribute ");
+            }
+        }
 
     }
 }
