@@ -50,27 +50,27 @@ public class Main {
                 System.out.println(items);
             }
             System.out.println("lets start with Strength you have " + 27 + " attribute points");
-            Player.PlayerStats.test("strength", 27);
+            Player.PlayerStats.addPointsManually("strength", 27);
 
             System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Dexterity");
-            Player.PlayerStats.test("dexterity", Player.PlayerStats.attributePoints);
+            Player.PlayerStats.addPointsManually("dexterity", Player.PlayerStats.attributePoints);
 
             System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Constitution");
-            Player.PlayerStats.test("constitution", Player.PlayerStats.attributePoints);
+            Player.PlayerStats.addPointsManually("constitution", Player.PlayerStats.attributePoints);
 
             System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Intelligence");
-            Player.PlayerStats.test("intelligence", Player.PlayerStats.attributePoints);
+            Player.PlayerStats.addPointsManually("intelligence", Player.PlayerStats.attributePoints);
 
             System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Wisdom");
-            Player.PlayerStats.test("wisdom", Player.PlayerStats.attributePoints);
+            Player.PlayerStats.addPointsManually("wisdom", Player.PlayerStats.attributePoints);
 
             System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("and for the last Stat Charisma");
-            Player.PlayerStats.test("charisma", Player.PlayerStats.attributePoints);
+            Player.PlayerStats.addPointsManually("charisma", Player.PlayerStats.attributePoints);
 
 
         } else {
@@ -98,7 +98,7 @@ public class Main {
                     }
                     choice = userInput.nextInt();
 
-                    Player.PlayerStats.test(Player.PlayerStats.statNames[choice], Player.PlayerStats.attributePoints);
+                    Player.PlayerStats.addPointsManually(Player.PlayerStats.statNames[choice], Player.PlayerStats.attributePoints);
                 } while (Player.PlayerStats.attributePoints > 0);
 
             }
