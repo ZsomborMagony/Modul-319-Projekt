@@ -53,7 +53,30 @@ public class Player {
         public static int playerWisdom = 8;
         public static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
+        private static int modifier;
 
+        public static int statModifiers(String attribute) {
+            int temp = 0;
+
+            switch (attribute) {
+                case "strength" -> temp = playerStrength;
+                case "dexterity" -> temp = playerDexterity;
+                case "constitution" -> temp = playerConstitution;
+                case "intelligence" -> temp = playerIntelligence;
+                case "wisdom" -> temp = playerWisdom;
+                case "charisma" -> temp = playerCharisma;
+            }
+            switch (temp) {
+                case 8, 9 -> modifier = -1;
+                case 10, 11 -> modifier = 0;
+                case 12, 13 -> modifier = 1;
+                case 14, 15 -> modifier = 2;
+                case 16, 17 -> modifier = 3;
+                case 18, 19 -> modifier = 4;
+                case 20 -> modifier = 5;
+
+            }return modifier;
+        }
         //player stat choice
 
         public static void addPointsManually(String attribute, int gainedAttributePoints) {
@@ -62,18 +85,15 @@ public class Player {
             Scanner userInput = new Scanner(System.in);
             int choice;
             int temp = 0;
-            if (attribute.equalsIgnoreCase("strength")) {
-                temp = playerStrength;
-            } else if (attribute.equalsIgnoreCase("dexterity")) {
-                temp = playerDexterity;
-            } else if (attribute.equalsIgnoreCase("constitution")) {
-                temp = playerConstitution;
-            } else if (attribute.equalsIgnoreCase("intelligence")) {
-                temp = playerIntelligence;
-            } else if (attribute.equalsIgnoreCase("wisdom")) {
-                temp = playerWisdom;
-            } else if (attribute.equalsIgnoreCase("charisma")) {
-                temp = playerCharisma;
+
+            switch (attribute) {
+                case "strength" -> temp = playerStrength;
+                case "dexterity" -> temp = playerDexterity;
+                case "constitution" -> temp = playerConstitution;
+                case "intelligence" -> temp = playerIntelligence;
+                case "wisdom" -> temp = playerWisdom;
+                case "charisma" -> temp = playerCharisma;
+
             }
             if (temp <= 20) {
 
@@ -99,19 +119,14 @@ public class Player {
                     attribute += choice;
                 }
             }
+            switch (attribute) {
+                case "strength" -> playerStrength = temp;
+                case "dexterity" -> playerDexterity = temp;
+                case "constitution" -> playerConstitution = temp;
+                case "intelligence" -> playerIntelligence = temp;
+                case "wisdom" -> playerWisdom = temp;
+                case "charisma" -> playerCharisma = temp;
 
-            if (attribute.equalsIgnoreCase("strength")) {
-                playerStrength = temp;
-            } else if (attribute.equalsIgnoreCase("dexterity")) {
-                playerDexterity = temp;
-            } else if (attribute.equalsIgnoreCase("constitution")) {
-                playerConstitution = temp;
-            } else if (attribute.equalsIgnoreCase("intelligence")) {
-                playerIntelligence = temp;
-            } else if (attribute.equalsIgnoreCase("wisdom")) {
-                playerWisdom = temp;
-            } else if (attribute.equalsIgnoreCase("charisma")) {
-                playerCharisma = temp;
             }
 
         }
@@ -170,13 +185,13 @@ public class Player {
             }
             int roll;
             do {
-                roll=Dice.d(4);
-                if (roll<=attributePoints){
+                roll = Dice.d(4);
+                if (roll <= attributePoints) {
                     rollPoints(Dice.d(6), attributePoints, roll);
-                }else if (attributePoints==0){
+                } else if (attributePoints == 0) {
                     break;
                 }
-            }while (true);
+            } while (true);
 
         }
 

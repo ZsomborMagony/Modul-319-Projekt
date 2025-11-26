@@ -9,6 +9,7 @@ public class MakeCharacter {
     public static void makeCharakter() {
         int count = 0;
         int choice;
+        int roll;
         String[] yesOrNo = {"(0) Yes", "(1) No"};
 
 
@@ -108,6 +109,7 @@ public class MakeCharacter {
 
         System.out.println("looks good here are your stats");
         Player.PlayerStats.stats();
+
 
     }
 }
