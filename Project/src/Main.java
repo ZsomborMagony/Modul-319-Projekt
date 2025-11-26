@@ -1,8 +1,6 @@
-import entetys.allClasses;
-import entetys.player;
-import mechanics.dice;
+import entetys.AllClasses;
+import entetys.Player;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +12,7 @@ public class Main {
 
         Scanner userInput = new Scanner(System.in);
         System.out.println("Welcome to our Adventure please choose one of the following classes");
-        for (String classOptions : allClasses.classes) {
+        for (String classOptions : AllClasses.classes) {
 
             System.out.println("(" + count + ") " + classOptions);
             count++;
@@ -26,8 +24,8 @@ public class Main {
             }
 
         } while (choice < 0 || choice > 3);
-        player.playerChosenClass = choice;
-        System.out.println("you chose the Class " + player.playerClass(""));
+        Player.playerChosenClass = choice;
+        System.out.println("you chose the Class " + Player.playerClass(""));
 
         System.out.println("please chose your attributes or do you want to roll for them?");
         System.out.println("(1) chose");
@@ -48,49 +46,42 @@ public class Main {
         if (choice == 1) {
             System.out.println("you have to distribute the 27 attribute points on the following 6 Stats");
 
-            for (String items : player.playerStats.statNames) {
+            for (String items : Player.PlayerStats.statNames) {
                 System.out.println(items);
             }
             System.out.println("lets start with Strength you have " + 27 + " attribute points");
-            player.playerStats.addPoints(0, 27);
+            Player.PlayerStats.test("strength", 27);
 
-            System.out.println("you have " + player.playerStats.attributePoints + " attribute points left");
+            System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Dexterity");
-            player.playerStats.addPoints(1, player.playerStats.attributePoints);
+            Player.PlayerStats.test("dexterity", Player.PlayerStats.attributePoints);
 
-            System.out.println("you have " + player.playerStats.attributePoints + " attribute points left");
+            System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Constitution");
-            player.playerStats.addPoints(2, player.playerStats.attributePoints);
+            Player.PlayerStats.test("constitution", Player.PlayerStats.attributePoints);
 
-            System.out.println("you have " + player.playerStats.attributePoints + " attribute points left");
+            System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Intelligence");
-            player.playerStats.addPoints(3, player.playerStats.attributePoints);
+            Player.PlayerStats.test("intelligence", Player.PlayerStats.attributePoints);
 
-            System.out.println("you have " + player.playerStats.attributePoints + " attribute points left");
+            System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("Next is Wisdom");
-            player.playerStats.addPoints(4, player.playerStats.attributePoints);
+            Player.PlayerStats.test("wisdom", Player.PlayerStats.attributePoints);
 
-            System.out.println("you have " + player.playerStats.attributePoints + " attribute points left");
+            System.out.println("you have " + Player.PlayerStats.attributePoints + " attribute points left");
             System.out.println("and for the last Stat Charisma");
-            player.playerStats.addPoints(5, player.playerStats.attributePoints);
+            Player.PlayerStats.test("charisma", Player.PlayerStats.attributePoints);
 
 
         } else {
-            player.playerStats.addPointsRoll(0, 27, dice.d(4));
-           for (count=1;count<=5;count++){
-               player.playerStats.addPointsRoll(count,player.playerStats.attributePoints,dice.d(4));
-           }
-           for (count=0;player.playerStats.attributePoints>=4;count++){
-               player.playerStats.addPointsRoll(dice.d(6),player.playerStats.attributePoints,dice.d(4));
-           }
-
+            Player.PlayerStats.rollStats();
         }
 
-        if (player.playerStats.attributePoints > 0) {
+        if (Player.PlayerStats.attributePoints > 0) {
             System.out.println("you seem to have forgotten a few points you have "
-                    + player.playerStats.attributePoints + " points left");
+                    + Player.PlayerStats.attributePoints + " points left");
             System.out.println("your current stats look like this");
-            player.playerStats.stats();
+            Player.PlayerStats.stats();
             System.out.println("would you like to spend them");
             for (String option : yesOrNo) {
                 System.out.println(option);
@@ -99,22 +90,22 @@ public class Main {
             if (choice == 0) {
                 do {
                     System.out.println("On which stat do you want to spent the "
-                            + player.playerStats.attributePoints + " points?");
+                            + Player.PlayerStats.attributePoints + " points?");
                     count = 0;
-                    for (String items : player.playerStats.statNames) {
+                    for (String items : Player.PlayerStats.statNames) {
                         System.out.println("(" + count + ")" + items);
                         count++;
                     }
                     choice = userInput.nextInt();
-                    player.playerStats.addPoints(choice, player.playerStats.attributePoints);
-                } while (player.playerStats.attributePoints > 0);
 
+                    Player.PlayerStats.test(Player.PlayerStats.statNames[choice], Player.PlayerStats.attributePoints);
+                } while (Player.PlayerStats.attributePoints > 0);
 
             }
         }
 
         System.out.println("looks good here are your stats");
-        player.playerStats.stats();
+        Player.PlayerStats.stats();
 
     }
 }

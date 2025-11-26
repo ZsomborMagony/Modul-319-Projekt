@@ -1,6 +1,6 @@
 package entetys;
 
-public class allClasses {
+public class AllClasses {
 
        public static String[] classes = {
 
