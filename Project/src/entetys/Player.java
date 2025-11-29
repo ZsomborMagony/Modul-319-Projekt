@@ -75,7 +75,8 @@ public class Player {
                 case 18, 19 -> modifier = 4;
                 case 20 -> modifier = 5;
 
-            }return modifier;
+            }
+            return modifier;
         }
         //player stat choice
 
@@ -195,7 +196,39 @@ public class Player {
 
         }
 
+        public static void distributionStart(int choice) {
+            String attribute = "";
+            Scanner userInput = new Scanner(System.in);
+            int temp = 0;
+            while (choice < 0 || choice > 5) {
+                System.out.println("please don't put more than 5 or less than 0 in ");
+                choice = userInput.nextInt();
 
+            }
+            switch (choice) {
+                case 0 -> attribute = "strength";
+                case 1 -> attribute = "dexterity";
+                case 2 -> attribute = "constitution";
+                case 3 -> attribute = "intelligence";
+                case 4 -> attribute = "wisdom";
+                case 5 -> attribute = "charisma";
+                default -> temp=40;
+            }
+            switch (attribute) {
+                case "strength" -> temp = playerStrength;
+                case "dexterity" -> temp = playerDexterity;
+                case "constitution" -> temp = playerConstitution;
+                case "intelligence" -> temp = playerIntelligence;
+                case "wisdom" -> temp = playerWisdom;
+                case "charisma" -> temp = playerCharisma;
+            }
+            if (temp <= 16) {
+                System.out.println("how many points do you want to put into "+ attribute);
+                addPointsManually(attribute, attributePoints);
+            }
+            System.out.println(attribute+" is already at 16 witch is the max an attribute can be at the start");
+
+        }
     }
 
 }

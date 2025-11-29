@@ -47,7 +47,8 @@ public class MakeCharacter {
             }
         } while (choice != 2);
         if (choice == 1) {
-            System.out.println("you have to distribute the 27 attribute points on the following 6 Stats");
+            System.out.println("you have to distribute the 27 attribute points on the following 6 Stats you can" +
+                    " distribute max a max of 8 points int each stat");
 
             for (String items : Player.PlayerStats.statNames) {
                 System.out.println(items);
@@ -101,7 +102,8 @@ public class MakeCharacter {
                     }
                     choice = userInput.nextInt();
 
-                    Player.PlayerStats.addPointsManually(Player.PlayerStats.statNames[choice], Player.PlayerStats.attributePoints);
+
+                    Player.PlayerStats.distributionStart(choice);
                 } while (Player.PlayerStats.attributePoints > 0);
 
             }
