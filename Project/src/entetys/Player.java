@@ -45,6 +45,7 @@ public class Player {
             }
         }
 
+        //default stats
 
         public static int playerStrength = 8; //8 start
         public static int playerDexterity = 8;
@@ -131,6 +132,8 @@ public class Player {
             }
 
         }
+
+
 
         public static void rollPoints(int attribute, int gainedAttributePoints, int roll) {
             int temp = 0;

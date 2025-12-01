@@ -12,13 +12,12 @@ import mechanics.Dice;
 
 public class Weapons {
 
-    public static String name = "test";
-    public static int damage = 1;
-    public static int cost = 1;
-    public static double weight = 1;
-    public static String damageRange = "1d6";
+    public String name = "test";
+    public int damage = 1;
+    public int cost = 1;
+    public double weight = 1;
+    public String damageRange = "1d6";
 
-    // Simple Melee entetys.Weapons
     public Weapons(String name, int damage, int cost, double weight, String damageRange) {
 
         this.name = name;
@@ -29,7 +28,11 @@ public class Weapons {
 
     }
 
-    public static Weapons Club = new Weapons("Club", Dice.d(6), 1, 4, "1d6");
+//    10 Copper = 1 Silver
+//    10 Silver = 1 Gold
+
+    public static Weapons club = new Weapons("Club", Dice.d(4), 100, 2, "1d4");
+    public static Weapons dagger = new Weapons("Dagger", Dice.d(4), 200, 1, "1d4");
 
 }
 
