@@ -21,7 +21,12 @@ public class AllClasses {
                     level 17-21 = 1d12
 
                    applies if no weapon is equipped or a simple weapon or a light martial weapon
+                   uses dex modifier instead of strength
+
             */
+                /*
+                    unarmored defense if no armor or shield base armor + dex modifier
+                */
 
             }
         }
