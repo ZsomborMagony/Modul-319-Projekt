@@ -55,6 +55,7 @@ public class Player {
         public static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
         private static int modifier;
+        public static int level =1;
 
         public static int statModifiers(String attribute) {
             int temp = 0;
