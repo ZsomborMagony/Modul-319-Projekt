@@ -1,4 +1,4 @@
-// Fragen
+package entetys;// Fragen
 /*
  - damages
  - Info? Maybe
@@ -10,7 +10,7 @@
 
 public class Weapons {
     
-    // Simple Melee Weapons
+    // Simple Melee entetys.Weapons
     public class Club {
         
         String name = "Club" ;
@@ -110,7 +110,7 @@ public class Weapons {
 
     }
     
-    // Simple Ranged Weapons
+    // Simple Ranged entetys.Weapons
 
     public class Crossbow {
 
@@ -148,7 +148,7 @@ public class Weapons {
 
     }
 
-    // Martial Melee Weapons
+    // Martial Melee entetys.Weapons
     public class Battleaxe {
 
         String name = "Battleaxe" ;
@@ -311,7 +311,7 @@ public class Weapons {
 
     }
 
-    // Martial Ranged Weapons
+    // Martial Ranged entetys.Weapons
     public class Blowgun {
 
         String name = "Blowgun" ;
