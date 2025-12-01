@@ -212,7 +212,7 @@ public class Player {
                 case 3 -> attribute = "intelligence";
                 case 4 -> attribute = "wisdom";
                 case 5 -> attribute = "charisma";
-                default -> temp=40;
+                default -> temp = 40;
             }
             switch (attribute) {
                 case "strength" -> temp = playerStrength;
@@ -223,10 +223,10 @@ public class Player {
                 case "charisma" -> temp = playerCharisma;
             }
             if (temp <= 16) {
-                System.out.println("how many points do you want to put into "+ attribute);
+                System.out.println("how many points do you want to put into " + attribute);
                 addPointsManually(attribute, attributePoints);
             }
-            System.out.println(attribute+" is already at 16 witch is the max an attribute can be at the start");
+            System.out.println(attribute + " is already at 16 witch is the max an attribute can be at the start");
 
         }
     }
