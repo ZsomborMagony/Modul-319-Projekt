@@ -55,24 +55,6 @@ public class AllClasses {
             return armorClass;
         }
 
-        //increased movement if not wearing armor or have shield equipped
-        public static int unarmoredMovement(String shieldOrArmor, int level) {
-
-            int movement = 0;
-            if (shieldOrArmor.equalsIgnoreCase("n")) {
-                switch (level) {
-                    case 1 -> movement += 0;
-                    case 2, 3, 4, 5 -> movement += 10;
-                    case 6, 7, 8, 9 -> movement += 15;
-                    case 10, 11, 12, 13 -> movement += 20;
-                    case 14, 15, 16, 17 -> movement += 25;
-                    case 18, 19, 20 -> movement += 30;
-                }
-            }
-
-            return movement;
-        }
-
         /*
         ki points
          */
@@ -96,12 +78,18 @@ public class AllClasses {
             if (kiPoints > 0) {
                 attack = martialArts(level) + martialArts(level);
                 monk.kiPoints = kiPoints - 1;
-            }else {
+            } else {
                 System.out.println("you don't have enough Ki Points");
             }
             return attack;
         }
-        //
+
+        //uncanny metabolism regain ki points once per long rest (martial arts die)
+        //regain hit points (level + martial arts roll)
+        public static void uncannyMetabolism(int level, int martialArtsMinusDexterity) {
+            kiPoints += martialArtsMinusDexterity;
+            Player.PlayerStats.hp += level + martialArtsMinusDexterity;
+        }
     }
 
 }
