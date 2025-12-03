@@ -77,7 +77,7 @@ public class AllClasses {
             int attack = 0;
             if (kiPoints > 0) {
                 attack = martialArts(level) + martialArts(level);
-                monk.kiPoints = kiPoints - 1;
+                monk.kiPoints -= 1;
             } else {
                 System.out.println("you don't have enough Ki Points");
             }
@@ -89,6 +89,20 @@ public class AllClasses {
         public static void uncannyMetabolism(int level, int martialArtsMinusDexterity) {
             kiPoints += martialArtsMinusDexterity;
             Player.PlayerStats.hp += level + martialArtsMinusDexterity;
+        }
+
+        //Deflect Attack
+        public static int deflectAttack(int level, int damage, int kiPoints) {
+            int attackOrDamage[2];
+            int attack=100;
+            int playerRoll = Dice.d(10) + Player.PlayerStats.statModifiers("dexterity") + level;
+            if (playerRoll < damage) {
+                damage -= playerRoll;
+            } else if (kiPoints > 0) {
+                monk.kiPoints -= 1;
+                attack=martialArts(level)-Player.PlayerStats.statModifiers("dexterity")+martialArts(level);
+            }return attack;
+            return damage;
         }
     }
 
