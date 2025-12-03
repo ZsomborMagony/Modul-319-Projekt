@@ -27,8 +27,8 @@ public class MakeCharacter {
             }
 
         } while (choice < 0 || choice > 3);
-        Player.playerChosenClass = choice;
         System.out.println("you chose the Class " + Player.playerClass(""));
+        Player.playerChosenClass = choice;
 
         System.out.println("please chose your attributes or do you want to roll for them?");
         System.out.println("(1) chose");

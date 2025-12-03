@@ -136,11 +136,11 @@ public class Player {
         }
 
 
-        public static void rollPoints(int attribute, int gainedAttributePoints, int roll) {
+    public static void rollPoints(int attribute, int gainedAttributePoints, int roll) {
             int temp = 0;
-            switch (attribute) {
-                case 0 -> temp = playerStrength;
-                case 1 -> temp = playerDexterity;
+        switch (attribute) {
+            case 0 -> temp = playerStrength;
+            case 1 -> temp = playerDexterity;
                 case 2 -> temp = playerConstitution;
                 case 3 -> temp = playerIntelligence;
                 case 4 -> temp = playerWisdom;
