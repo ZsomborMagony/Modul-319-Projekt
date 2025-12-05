@@ -93,7 +93,7 @@ public class AllClasses {
 
         //Deflect Attack
         public static int deflectAttack(int level, int damage, int kiPoints) {
-            int attackOrDamage[2];
+            //int attackOrDamage[2];
             int attack=100;
             int playerRoll = Dice.d(10) + Player.PlayerStats.statModifiers("dexterity") + level;
             if (playerRoll < damage) {
@@ -102,11 +102,11 @@ public class AllClasses {
                 monk.kiPoints -= 1;
                 attack=martialArts(level)-Player.PlayerStats.statModifiers("dexterity")+martialArts(level);
             }return attack;
-            return damage;
-        }
+            //return damage;
+
     }
 
-}
+}}
 
 
 
