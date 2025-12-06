@@ -46,9 +46,9 @@ public class AllClasses {
         /*
             unarmored defense if no armor or shield base armor + dex modifier
         */
-        public static int unarmoredDefense(boolean shieldOrArmor) {
+        public static int unarmoredDefense(String shieldOrArmor) {
             int armorClass = 0;
-            if (shieldOrArmor==false) {
+            if (shieldOrArmor.equalsIgnoreCase("n")) {
                 armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
                         + Player.PlayerStats.statModifiers("wisdom");
             }
@@ -60,15 +60,16 @@ public class AllClasses {
          */
         public static int kiPoints = 0;
 
-        public static void regenKiPoints(int level, boolean rest) {
+        public static int regenKiPoints(int level, String rest) {
 
 
-            if (rest==true) {
+            if (rest.equalsIgnoreCase("y")) {
                 switch (level) {
                     case 1 -> kiPoints = 0;
                     default -> kiPoints = level;
                 }
             }
+            return kiPoints;
         }
 
         //Flurry of Blows -1ki Point for 2 unarmed strikes as a bonus action
@@ -92,22 +93,20 @@ public class AllClasses {
 
         //Deflect Attack
         public static int deflectAttack(int level, int damage, int kiPoints) {
-           // int attackOrDamage[2];
-
-           int attack=0;
+            //int attackOrDamage[2];
+            int attack=100;
             int playerRoll = Dice.d(10) + Player.PlayerStats.statModifiers("dexterity") + level;
             if (playerRoll < damage) {
                 damage -= playerRoll;
-                return damage;
             } else if (kiPoints > 0) {
                 monk.kiPoints -= 1;
                 attack=martialArts(level)-Player.PlayerStats.statModifiers("dexterity")+martialArts(level);
             }return attack;
+            //return damage;
 
-        }
     }
 
-}
+}}
 
 
 
