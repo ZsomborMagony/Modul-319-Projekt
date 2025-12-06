@@ -1,13 +1,4 @@
-package entetys;// Fragen
-/*
- - damages
- - Info? Maybe
- - static void (so wir nicht nochmal ein Class erstellen muss)
- - Verbesserungs Vorschlag
- - Wictig (Cant, run the code. Issue resolve (Diego))
- */
-
-
+package entetys;
 import mechanics.Dice;
 
 public class Weapons {
