@@ -1,4 +1,5 @@
 package entetys;
+
 import mechanics.Dice;
 
 public class Armor {
@@ -10,7 +11,7 @@ public class Armor {
     public boolean stealth;
     public int weight;
 
-    public Armor(String name, int cost, int armorClass, int strength, boolean stealth, int weight){
+    public Armor(String name, int cost, int armorClass, int strength, boolean stealth, int weight) {
 
         this.name = name;
         this.cost = cost;

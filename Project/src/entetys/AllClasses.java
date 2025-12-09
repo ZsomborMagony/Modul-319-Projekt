@@ -15,6 +15,8 @@ public class AllClasses {
     public class monk {
 
         /*
+                lv1
+
                martialArts
                 level 1-5 = 1d6
                 level 5-11 = 1d8
@@ -46,24 +48,27 @@ public class AllClasses {
         /*
             unarmored defense if no armor or shield base armor + dex modifier
         */
-        public static int unarmoredDefense(String shieldOrArmor) {
+        public static int unarmoredDefense(boolean shieldOrArmor) {
             int armorClass = 0;
-            if (shieldOrArmor.equalsIgnoreCase("n")) {
+            if (shieldOrArmor == false) {
                 armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
                         + Player.PlayerStats.statModifiers("wisdom");
             }
             return armorClass;
         }
 
+
+        //lv2
+
         /*
         ki points
          */
         public static int kiPoints = 0;
 
-        public static int regenKiPoints(int level, String rest) {
+        public static int regenKiPoints(int level, boolean rest) {
 
 
-            if (rest.equalsIgnoreCase("y")) {
+            if (rest == true) {
                 switch (level) {
                     case 1 -> kiPoints = 0;
                     default -> kiPoints = level;
@@ -91,22 +96,39 @@ public class AllClasses {
             Player.PlayerStats.hp += level + martialArtsMinusDexterity;
         }
 
+
+        //lv3
+
         //Deflect Attack
-        public static int deflectAttack(int level, int damage, int kiPoints) {
+        public static boolean reducedDamage = true;
+
+        public static int deflectAttack(int level, int damage, int kiPoints, int monsterDex) {
             //int attackOrDamage[2];
-            int attack=100;
+
             int playerRoll = Dice.d(10) + Player.PlayerStats.statModifiers("dexterity") + level;
             if (playerRoll < damage) {
                 damage -= playerRoll;
-            } else if (kiPoints > 0) {
+                reducedDamage = true;
+            } else if (kiPoints > 0 && monsterDex <= 8 + Player.PlayerStats.statModifiers("wisdom")) {
                 monk.kiPoints -= 1;
-                attack=martialArts(level)-Player.PlayerStats.statModifiers("dexterity")+martialArts(level);
-            }return attack;
-            //return damage;
+                damage = martialArts(level) - Player.PlayerStats.statModifiers("dexterity") + martialArts(level);
+                reducedDamage = false;
+            }
+            return damage;
+
+
+        }
+
+        // lv5
+
+        //extra attack
+        public int extraAttack(int attack) {
+            attack += attack;
+            return attack;
+        }
 
     }
-
-}}
+}
 
 
 
