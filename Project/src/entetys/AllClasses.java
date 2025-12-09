@@ -127,6 +127,11 @@ public class AllClasses {
             return attack;
         }
 
+        //stunning strike?
+
+        //lv 6
+
+
     }
 }
 
