@@ -81,8 +81,14 @@ public class AllClasses {
         public static int flurryOfBlows(int level, int kiPoints) {
             int attack = 0;
             if (kiPoints > 0) {
-                attack = martialArts(level) + martialArts(level);
-                monk.kiPoints -= 1;
+                if (level >= 10) {
+
+                    attack = martialArts(level) + martialArts(level) + martialArts(level);
+                    monk.kiPoints -= 1;
+                } else {
+                    attack = martialArts(level) + martialArts(level);
+                    monk.kiPoints -= 1;
+                }
             } else {
                 System.out.println("you don't have enough Ki Points");
             }
@@ -129,7 +135,16 @@ public class AllClasses {
 
         //stunning strike?
 
-        //lv 6
+        //lv 20
+        //body and mind
+        public static void bodyAndMind() {
+            if (Player.PlayerStats.playerDexterity < 20) {
+                Player.PlayerStats.playerDexterity += 4;
+            }
+            if (Player.PlayerStats.playerWisdom < 20) {
+                Player.PlayerStats.playerWisdom += 4;
+            }
+        }
 
 
     }
