@@ -47,15 +47,15 @@ public class Player {
 
         //default stats
 
-        public static int playerStrength = 8; //8 start
-        public static int playerDexterity = 8;
-        public static int playerConstitution = 8;
-        public static int playerIntelligence = 8;
-        public static int playerWisdom = 8;
-        public static int playerCharisma = 8;
+        static int playerStrength = 8; //8 start
+        static int playerDexterity = 8;
+        static int playerConstitution = 8;
+        static int playerIntelligence = 8;
+        static int playerWisdom = 8;
+        static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
         private static int modifier;
-        public static int level = 1;
+        static int level = 1;
         public static int hp = 20; //hitPoints
 
         public static int statModifiers(String attribute) {

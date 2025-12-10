@@ -2,6 +2,7 @@ package entetys;
 
 import mechanics.Dice;
 
+
 public class AllClasses {
 
     public static String[] classes = {
@@ -13,7 +14,15 @@ public class AllClasses {
     };
 
     public class monk {
+        //ability options
+        String abilitys[]={
 
+                "Martial Arts, unarmored Defense",
+                "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows",
+                "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack",
+                "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack, extra Attack",
+
+        };
         /*
                 lv1
 
@@ -27,7 +36,7 @@ public class AllClasses {
                uses dex modifier instead of strength action
 
         */
-        public static int martialArts(int level) {
+            public static int martialArts ( int level){
             int attack = 0;
             switch (level) {
                 case 1, 2, 3, 4 -> attack = Dice.d(6) +
@@ -48,7 +57,7 @@ public class AllClasses {
         /*
             unarmored defense if no armor or shield base armor + dex modifier
         */
-        public static int unarmoredDefense(boolean shieldOrArmor) {
+            public static int unarmoredDefense ( boolean shieldOrArmor){
             int armorClass = 0;
             if (shieldOrArmor == false) {
                 armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
