@@ -1,7 +1,6 @@
 package entetys;
 
 import mechanics.Dice;
-
 import java.util.Scanner;
 
 public class Player {
