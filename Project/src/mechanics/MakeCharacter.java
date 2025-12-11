@@ -5,6 +5,8 @@ import entetys.Player;
 
 import java.util.Scanner;
 
+import static entetys.AllClasses.classes;
+
 public class MakeCharacter {
     public static void makeCharakter() {
         int count = 0;
@@ -15,7 +17,7 @@ public class MakeCharacter {
 
         Scanner userInput = new Scanner(System.in);
         System.out.println("Welcome to our Adventure please choose one of the following classes");
-        for (String classOptions : AllClasses.classes) {
+        for (String classOptions : classes) {
 
             System.out.println("(" + count + ") " + classOptions);
             count++;

@@ -48,10 +48,10 @@ public class Player {
         //default stats
 
         static int playerStrength = 8; //8 start
-        static int playerDexterity = 8;
+        public static int playerDexterity = 8;
         static int playerConstitution = 8;
         static int playerIntelligence = 8;
-        static int playerWisdom = 8;
+        public static int playerWisdom = 8;
         static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
         private static int modifier;
