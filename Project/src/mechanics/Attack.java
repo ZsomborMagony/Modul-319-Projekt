@@ -1,9 +1,9 @@
 package mechanics;
 
 import entetys.AllClasses;
-import entetys.AllClasses.monk;
 import entetys.Monsters;
 import entetys.Player;
+import entetys.classes.Monk;
 
 //          attack example
 //        Attack.enemyHp=Monsters.mimic.hp;
@@ -26,7 +26,7 @@ public class Attack {
 
     public static void deflectAttackMonk(int damage) {
 
-        if (AllClasses.monk.reducedDamage == true) {
+        if (Monk.reducedDamage == true) {
             Player.PlayerStats.hp -= damage;
             System.out.println("you took " + damage + " damage");
         } else {
