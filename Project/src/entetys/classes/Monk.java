@@ -75,7 +75,7 @@ public class Monk {
            uses dex modifier instead of strength action
     
     */
-    public int martialArts() {
+    public static int martialArts() {
         int level = Player.PlayerStats.level;
         int attack = 0;
         switch (level) {
@@ -114,7 +114,7 @@ public class Monk {
      */
     public static int kiPoints = 0;
 
-    public int regenKiPoints(boolean rest) {
+    public static int regenKiPoints(boolean rest) {
         int level = Player.PlayerStats.level;
 
         if (rest == true) {
@@ -127,7 +127,7 @@ public class Monk {
     }
 
     //Flurry of Blows -1ki Point for 2 unarmed strikes as a bonus action
-    public int flurryOfBlows() {
+    public static int flurryOfBlows() {
         int level = Player.PlayerStats.level;
         int attack = 0;
         if (kiPoints > 0) {
