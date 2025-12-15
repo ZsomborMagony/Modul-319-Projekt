@@ -1,6 +1,7 @@
 package entetys.classes;
 
 import entetys.Player;
+import mechanics.Attack;
 import mechanics.Dice;
 
 import java.util.Scanner;
@@ -243,7 +244,7 @@ public class Cleric {
             }
         }
     }
-
+//lv2
     void divineSpark() {
         Scanner userInput = new Scanner(System.in);
         int temp;
@@ -252,12 +253,33 @@ public class Cleric {
             System.out.println("(1) Damage");
             temp = userInput.nextInt();
         } while (temp != 0 || temp != 1);
+        int roll;
+        if (Player.PlayerStats.level < 7) {
+            roll = Dice.d(8);
+        } else if (Player.PlayerStats.level < 13) {
+            roll = Dice.d(8) + Dice.d(8);
+        } else if (Player.PlayerStats.level < 18) {
+            roll = Dice.d(8) + Dice.d(8) + Dice.d(8);
+        } else {
+            roll = Dice.d(8) + Dice.d(8) + Dice.d(8) + Dice.d(8);
+        }
         if (temp == 0) {
-            int roll= Dice.d(8);
-            if (roll<(Player.PlayerStats.maxHp-Player.PlayerStats.hp)){
-                Player.PlayerStats.hp+=roll;
+            if (roll < (Player.PlayerStats.maxHp - Player.PlayerStats.hp)) {
+                Player.PlayerStats.hp += roll;
+            } else {
+                Player.PlayerStats.hp = Player.PlayerStats.maxHp;
             }
+        } else {
+            Attack.enemyHp -= roll;
         }
     }
+    //7
+    //adds 1d8 on weapon attack
+    int divineStrike(int damage){
+
+        damage+=Dice.d(8);
+        return damage;
+    }
+
 }
 

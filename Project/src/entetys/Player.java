@@ -1,6 +1,7 @@
 package entetys;
 
 import mechanics.Dice;
+
 import java.util.Scanner;
 
 public class Player {
@@ -56,7 +57,7 @@ public class Player {
         private static int modifier;
         public static int level = 1;
         public static int hp = 20; //hitPoints
-        public static int maxHp=20;
+        public static int maxHp = 20;
 
         public static int statModifiers(String attribute) {
             int temp = 0;
