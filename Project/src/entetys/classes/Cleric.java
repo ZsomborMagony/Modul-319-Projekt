@@ -1,8 +1,13 @@
 package entetys.classes;
 
 import entetys.Player;
+import mechanics.Dice;
+
+import java.util.Scanner;
 
 public class Cleric {
+    public static int[] spellSlots = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+
     int proficiencyBonus() {
         switch (Player.PlayerStats.level) {
             case 1, 2, 3, 4 -> {
@@ -26,7 +31,7 @@ public class Cleric {
         }
     }
 
-    int cantrips() {
+    int regenCantrips() {
         switch (Player.PlayerStats.level) {
             case 1, 2, 3 -> {
                 return 3;
@@ -40,7 +45,7 @@ public class Cleric {
         }
     }
 
-    int preparedSpells() {
+    int regenPreparedSpells() {
         switch (Player.PlayerStats.level) {
             case 1 -> {
                 return 4;
@@ -100,9 +105,158 @@ public class Cleric {
         }
     }
 
-    int spellSlots(){
-        switch (Player.PlayerStats.level){
-           case
+    public static void regenSpellSlots() {
+        switch (Player.PlayerStats.level) {
+            case 1 -> spellSlots[0] = 2;
+            case 2 -> spellSlots[0] = 3;
+            case 3 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 2;
+            }
+            case 4 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+            }
+            case 5 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 2;
+            }
+            case 6 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+            }
+            case 7 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 1;
+            }
+            case 8 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 2;
+            }
+            case 9 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 1;
+            }
+            case 10 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 2;
+            }
+            case 11, 12 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 2;
+                spellSlots[5] = 1;
+            }
+            case 13, 14 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 2;
+                spellSlots[5] = 1;
+                spellSlots[6] = 1;
+            }
+            case 15, 16 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 2;
+                spellSlots[5] = 1;
+                spellSlots[6] = 1;
+                spellSlots[7] = 1;
+            }
+            case 17 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 2;
+                spellSlots[5] = 1;
+                spellSlots[6] = 1;
+                spellSlots[7] = 1;
+                spellSlots[8] = 1;
+            }
+            case 18 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 3;
+                spellSlots[5] = 1;
+                spellSlots[6] = 1;
+                spellSlots[7] = 1;
+                spellSlots[8] = 1;
+            }
+            case 19 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 3;
+                spellSlots[5] = 2;
+                spellSlots[6] = 1;
+                spellSlots[7] = 1;
+                spellSlots[8] = 1;
+            }
+            case 20 -> {
+                spellSlots[0] = 4;
+                spellSlots[1] = 3;
+                spellSlots[2] = 3;
+                spellSlots[3] = 3;
+                spellSlots[4] = 3;
+                spellSlots[5] = 2;
+                spellSlots[6] = 2;
+                spellSlots[7] = 1;
+                spellSlots[8] = 1;
+            }
+        }
+    }
+
+    int regenDivinityCharges() {
+        switch (Player.PlayerStats.level) {
+            case 1 -> {
+                return 0;
+            }
+            case 2, 3, 4, 5 -> {
+                return 2;
+            }
+            case 18, 19, 20 -> {
+                return 4;
+            }
+            default -> {
+                return 3;
+            }
+        }
+    }
+
+    void divineSpark() {
+        Scanner userInput = new Scanner(System.in);
+        int temp;
+        do {
+            System.out.println("(0) Heal");
+            System.out.println("(1) Damage");
+            temp = userInput.nextInt();
+        } while (temp != 0 || temp != 1);
+        if (temp == 0) {
+            int roll= Dice.d(8);
+            if (roll<(Player.PlayerStats.maxHp-Player.PlayerStats.hp)){
+                Player.PlayerStats.hp+=roll;
+            }
         }
     }
 }

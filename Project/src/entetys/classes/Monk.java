@@ -75,7 +75,8 @@ public class Monk {
            uses dex modifier instead of strength action
     
     */
-    public int martialArts(int level) {
+    public int martialArts() {
+        int level = Player.PlayerStats.level;
         int attack = 0;
         switch (level) {
             case 1, 2, 3, 4 -> attack = Dice.d(6) +
@@ -113,8 +114,8 @@ public class Monk {
      */
     public static int kiPoints = 0;
 
-    public int regenKiPoints(int level, boolean rest) {
-
+    public int regenKiPoints(boolean rest) {
+        int level = Player.PlayerStats.level;
 
         if (rest == true) {
             switch (level) {
@@ -126,15 +127,16 @@ public class Monk {
     }
 
     //Flurry of Blows -1ki Point for 2 unarmed strikes as a bonus action
-    public int flurryOfBlows(int level, int kiPoints) {
+    public int flurryOfBlows() {
+        int level = Player.PlayerStats.level;
         int attack = 0;
         if (kiPoints > 0) {
             if (level >= 10) {
 
-                attack = martialArts(level) + martialArts(level) + martialArts(level);
+                attack = martialArts() + martialArts() + martialArts();
                 Monk.kiPoints -= 1;
             } else {
-                attack = martialArts(level) + martialArts(level);
+                attack = martialArts() + martialArts();
                 Monk.kiPoints -= 1;
             }
         } else {
@@ -145,7 +147,9 @@ public class Monk {
 
     //uncanny metabolism regain ki points once per long rest (martial arts die)
 //regain hit points (level + martial arts roll)
-    public void uncannyMetabolism(int level, int martialArtsMinusDexterity) {
+    public void uncannyMetabolism() {
+        int martialArtsMinusDexterity = martialArts() - Player.PlayerStats.statModifiers("dexterity");
+        int level = Player.PlayerStats.level;
         kiPoints += martialArtsMinusDexterity;
         Player.PlayerStats.hp += level + martialArtsMinusDexterity;
     }
@@ -156,8 +160,9 @@ public class Monk {
     //Deflect Attack
     public static boolean reducedDamage = true;
 
-    public int deflectAttack(int level, int damage, int kiPoints, int monsterDex) {
+    public int deflectAttack(int damage, int monsterDex) {
         //int attackOrDamage[2];
+        int level = Player.PlayerStats.level;
 
         int playerRoll = Dice.d(10) + Player.PlayerStats.statModifiers("dexterity") + level;
         if (playerRoll < damage) {
@@ -165,7 +170,7 @@ public class Monk {
             reducedDamage = true;
         } else if (kiPoints > 0 && monsterDex <= 8 + Player.PlayerStats.statModifiers("wisdom")) {
             Monk.kiPoints -= 1;
-            damage = martialArts(level) - Player.PlayerStats.statModifiers("dexterity") + martialArts(level);
+            damage = martialArts() - Player.PlayerStats.statModifiers("dexterity") + martialArts();
             reducedDamage = false;
         }
         return damage;
