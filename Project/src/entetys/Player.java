@@ -54,7 +54,7 @@ public class Player {
         static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
         private static int modifier;
-        static int level = 1;
+        public static int level = 1;
         public static int hp = 20; //hitPoints
 
         public static int statModifiers(String attribute) {
