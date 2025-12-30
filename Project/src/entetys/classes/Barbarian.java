@@ -4,16 +4,17 @@ import mechanics.Dice;
 import entetys.Player;
 
 public class Barbarian {
+
+    // Core
     /*
-    Core:-
     Primary Ability: Strength
     Hit Die: d12 per level
     Armor: Light, Medium, Shields
      */
 
-    /*
-    Starting option:-
 
+    // Starting option
+    /*
     Option A:
     Greataxe
     4 Handaxes
@@ -23,34 +24,71 @@ public class Barbarian {
     75 GP
      */
 
+    // Rage
     /*
     Rage only if:-
     Armor Restriction: No Heavy Armor
-    Uses: Based on level (on table)
-     */
 
-    /*
     Rage Effects:-
     Ends on next turn
-    Zero Damage
+    Half Damage from enemies
     +Rage Attack Damage
+    Short Rest (2 Turns) = +1
+    Long Rest (10 Turns) = +all
+
      */
 
+    // Weapons Mastery
     /*
-    lvl 1:-
-    Abilities: [Rage, Unarmored Defense, Weapon Mastery]
+    lvl 1-3 = 2 Weapons
+    lvl 4-9 = 3 Weapons
+    lvl 10-20 = 4 Weapons
+     */
 
-    Rage (2) and Damage= +2
+    // Abilities
+    /*
+    lvl 1 [Rage, Unarmored Defense]
+    lvl 2-4 [Rage, Unarmored Defense, Reckless Attack]
+    lvl 5-6 [Rage, Unarmored Defense, Reckless Attack, Extra Attack]
+    lvl 7-19 [Rage, Unarmored Defense, Reckless Attack, Extra Attack, Feral Instinct]
+    lvl 20 [Rage, Unarmored Defense, Reckless Attack, Extra Attack, Feral Instinct, Primal Champion]
+     */
 
-    Unarmored Defense:
-    Armor class = 10 + dexterity + constitution
+    // Abilities during different lvl
+    // Rage
+    /*
+    lvl 1, 2 = Total=2, Damage=+2
+    lvl 3, 4, 5 = Total=3, Damage=+2
+    lvl 6, 7, 8 = Total=4, Damage=+2
+    lvl 9, 10, 11 = Total=4, Damage=+3
+    lvl 12, 13, 14, 15 = Total=5, Damage=+3
+    lvl 16 = Total=5, Damage=+4
+    lvl 17, 18, 19, 20 = Total=6, Damage=+4
+     */
+
+    // Unarmored Defense
+    /*
+    Armour Class = 10 + dex + con
     Shields allowed
-
-    Weapons Mastery: Simple and martial melee weapons
      */
 
+    // Reckless Attack
     /*
-    lvl 2:-
+    2d rolls for attack, also for enemies
+     */
 
+    // Extra Attack
+    /*
+    attack = 2 * attack
+     */
+
+    // Feral Instinct
+    /*
+    1d and 1d rolls, chooses one,then 1d + dex
+     */
+
+    //Primal Champion
+    /*
+    strength = +4 and constitution = +4
      */
 }
