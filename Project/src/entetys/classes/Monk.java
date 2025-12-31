@@ -49,17 +49,47 @@ public class Monk {
 
 
     //ability options
-    static String abilitys[] = {
-
-            "Martial Arts, unarmored Defense",
-            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows",
-            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack",
-            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack, extra Attack",
-
+//    static String abilitys[] = {
+//
+//            "Martial Arts, unarmored Defense",
+//            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows",
+//            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack",
+//            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack, extra Attack",
+//
+//    };
+    static String[] abilitys = {
+            "Martial Arts",
+            "unarmored Defense",
+            "Regen ki Points",
+            "Flurry of Blows",
+            "Deflect Attack",
+            "extra Attack"
     };
 
     public static void abilityOptions() {
-        System.out.println(abilitys[levelToAbilitys()]);
+        if (levelToAbilitys() == 0) {
+
+            for (int i = 0; i <= 1; i++) {
+                System.out.print(abilitys[i] + " ");
+            }
+        } else if (levelToAbilitys() == 1) {
+
+            for (int i = 0; i <= 3; i++) {
+                System.out.print(abilitys[i] + " ");
+            }
+        } else if (levelToAbilitys() == 2) {
+
+            for (int i = 0; i <= 4; i++) {
+                System.out.print(abilitys[i] + " ");
+            }
+        } else if (levelToAbilitys() == 3) {
+
+            for (int i = 0; i <= 5; i++) {
+                System.out.print(abilitys[i] + " ");
+            }
+        } else {
+            System.out.println("invalid level");
+        }
     }
 
     /*

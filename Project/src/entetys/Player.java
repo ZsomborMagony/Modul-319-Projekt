@@ -58,7 +58,7 @@ public class Player {
         public static int level = 1;
         public static int hp = 20; //hitPoints
         public static int maxHp = 20;
-        int xp = 0;
+        public static int xp = 0;
 
         public static int statModifiers(String attribute) {
             int temp = 0;

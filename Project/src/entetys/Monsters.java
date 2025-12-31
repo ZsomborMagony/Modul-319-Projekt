@@ -13,6 +13,7 @@ public class Monsters {
     public int armorClass;
     public String attack;
     public String name;
+    public int xp;
 
 
     public Monsters(String name, int hp, int armorClass, int strength, int dexterity, int constitution, int intelligence

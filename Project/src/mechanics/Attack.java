@@ -5,6 +5,8 @@ import entetys.Monsters;
 import entetys.Player;
 import entetys.classes.Monk;
 
+import java.util.Scanner;
+
 //          attack example
 //        Attack.enemyHp=Monsters.mimic.hp;
 //        Attack.enemyName=Monsters.mimic.name;
@@ -25,21 +27,48 @@ public class Attack {
     };
     public static int enemyHp = 0;
     static String enemyName = "";
-    static int xp=0;
-    public static void fight(int i) {
+    static int enemyXp;
+    static int xp = 0;
+
+
+    public void fight(int i) {
+        Scanner userInput = new Scanner(System.in);
         enemyHp = monsterList[i].hp;
         enemyName = monsterList[i].name;
+        enemyXp = monsterList[i].xp;
+        int attackChoice;
+        while (enemyHp>0){
 
+                System.out.println("enemy hp: " + enemyHp);
+                System.out.println("witch attack do you chose");
+                attackChoice = userInput.nextInt();
+                //array of possible attacks
+                playerAttack();
 
+                monsterAttack();//function from monster 1d6 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
+
+        }
     }
 
+    private void selectAttacks() {
+        if (Player.playerChosenClass == 0) {   //Monk
+
+
+        } else if (Player.playerChosenClass == 1) {     //Warlock
+
+        } else if (Player.playerChosenClass == 2) {     //Barbarian
+
+        } else if (Player.playerChosenClass == 3) {     //Cleric
+
+        }
+    }
 
     public void playerAttack(int attackRoll) {
         this.enemyHp -= attackRoll;
         if (this.enemyHp > 0) {
             System.out.println("you dealt " + attackRoll + " damage");
         } else {
-            System.out.println("you defetet " +enemyName+ " you gained "+xp);
+            System.out.println("you defetet " + enemyName + " you gained " + xp);
         }
 
     }
