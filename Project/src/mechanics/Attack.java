@@ -1,6 +1,5 @@
 package mechanics;
 
-import entetys.AllClasses;
 import entetys.Monsters;
 import entetys.Player;
 import entetys.classes.Monk;
@@ -31,23 +30,49 @@ public class Attack {
     static int xp = 0;
 
 
-    public void fight(int i) {
+    public void fight(int monsterNumber) {
         Scanner userInput = new Scanner(System.in);
-        enemyHp = monsterList[i].hp;
-        enemyName = monsterList[i].name;
-        enemyXp = monsterList[i].xp;
+        enemyHp = monsterList[monsterNumber].hp;
+        enemyName = monsterList[monsterNumber].name;
+        enemyXp = monsterList[monsterNumber].xp;
         int attackChoice;
-        while (enemyHp>0){
+        while (enemyHp > 0) {
 
-                System.out.println("enemy hp: " + enemyHp);
-                System.out.println("witch attack do you chose");
-                attackChoice = userInput.nextInt();
-                //array of possible attacks
-                playerAttack();
+            System.out.println("enemy hp: " + enemyHp);
+            System.out.println("witch attack do you chose");
+            attackChoice = userInput.nextInt();
+            //array of possible attacks
+            // playerAttack();
 
-                monsterAttack();//function from monster 1d6 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
+            //monsterAttack();//function from monster 1d6 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
 
         }
+    }
+
+    public static int diceSelector(int monsterNumber) {
+        int amountOfDice;
+        int diceSize;
+        int attack = 0;
+        if (monsterList[monsterNumber].attack.substring(1, 2).equalsIgnoreCase("d")) {
+            amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 1));
+            if (!monsterList[monsterNumber].attack.substring(3, 4).isEmpty()) {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 3));
+            } else {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 4));
+            }
+        } else {
+            amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 2));
+            if (!monsterList[monsterNumber].attack.substring(3, 4).isEmpty()) {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 3));
+            } else {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 4));
+            }
+        }
+        while (amountOfDice > 0) {
+            amountOfDice--;
+            attack += Dice.d(diceSize);
+        }
+        return attack;
     }
 
     private void selectAttacks() {
