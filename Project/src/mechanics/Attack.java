@@ -51,7 +51,7 @@ public class Attack {
 
     public static int diceSelector(int monsterNumber) {
         int amountOfDice;
-        int diceSize;
+        int diceSize=0;
         int attack = 0;
         if (monsterList[monsterNumber].attack.substring(1, 2).equalsIgnoreCase("d")) {
             amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 1));
