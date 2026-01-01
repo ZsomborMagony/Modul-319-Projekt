@@ -44,7 +44,7 @@ public class Attack {
             //array of possible attacks
             // playerAttack();
 
-            //monsterAttack();//function from monster 1d6 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
+            monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
 
         }
     }
@@ -55,7 +55,9 @@ public class Attack {
         int attack = 0;
         if (monsterList[monsterNumber].attack.substring(1, 2).equalsIgnoreCase("d")) {
             amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 1));
-            if (!monsterList[monsterNumber].attack.substring(3, 4).isEmpty()) {
+            if (monsterList[monsterNumber].attack.substring(3, 4).equalsIgnoreCase("+")||
+            monsterList[monsterNumber].attack.substring(3,4).isEmpty()) {
+               if (monsterList[monsterNumber].attack.substring(4,5).equalsIgnoreCase("+"))
                 diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 3));
             } else {
                 diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 4));
