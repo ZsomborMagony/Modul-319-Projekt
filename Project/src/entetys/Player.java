@@ -1,10 +1,11 @@
 package entetys;
 
 import mechanics.Dice;
+
 import java.util.Scanner;
 
 public class Player {
-    public static int playerChosenClass;
+    public static int playerChosenClass=0;
 
     public static String playerClass(String playerClass) {
 
@@ -54,8 +55,11 @@ public class Player {
         static int playerCharisma = 8;
         public static int attributePoints = 27;//27 start
         private static int modifier;
-        static int level = 1;
+        public static int level = 1;
         public static int hp = 20; //hitPoints
+        public static int maxHp = 20;
+        public static int xp = 0;
+        public static boolean rest=true;
 
         public static int statModifiers(String attribute) {
             int temp = 0;
