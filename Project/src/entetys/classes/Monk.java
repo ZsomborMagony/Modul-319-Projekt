@@ -70,22 +70,22 @@ public class Monk {
         if (levelToAbilitys() == 0) {
 
             for (int i = 0; i <= 1; i++) {
-                System.out.print(abilitys[i] + " ");
+                System.out.println(abilitys[i] + " ");
             }
         } else if (levelToAbilitys() == 1) {
 
             for (int i = 0; i <= 3; i++) {
-                System.out.print(abilitys[i] + " ");
+                System.out.println(abilitys[i] + " ");
             }
         } else if (levelToAbilitys() == 2) {
 
             for (int i = 0; i <= 4; i++) {
-                System.out.print(abilitys[i] + " ");
+                System.out.println(abilitys[i] + " ");
             }
         } else if (levelToAbilitys() == 3) {
 
             for (int i = 0; i <= 5; i++) {
-                System.out.print(abilitys[i] + " ");
+                System.out.println(abilitys[i] + " ");
             }
         } else {
             System.out.println("invalid level");
@@ -144,13 +144,16 @@ public class Monk {
      */
     public static int kiPoints = 0;
 
-    public static int regenKiPoints(boolean rest) {
+    public static int regenKiPoints() {
         int level = Player.PlayerStats.level;
 
-        if (rest == true) {
+        if (Player.PlayerStats.rest == true) {
             switch (level) {
                 case 1 -> kiPoints = 0;
-                default -> kiPoints = level;
+                default -> {
+                    kiPoints = level;
+                Player.PlayerStats.rest=false;
+                }
             }
         }
         return kiPoints;
@@ -190,7 +193,7 @@ public class Monk {
     //Deflect Attack
     public static boolean reducedDamage = true;
 
-    public int deflectAttack(int damage, int monsterDex) {
+    public static int deflectAttack(int damage, int monsterDex) {
         //int attackOrDamage[2];
         int level = Player.PlayerStats.level;
 

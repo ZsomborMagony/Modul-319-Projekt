@@ -26,26 +26,25 @@ public class Attack {
     };
     public static int enemyHp = 0;
     static String enemyName = "";
-    static int enemyXp;
-    static int xp = 0;
+    static int enemyXp=0;
+    int monsterNumber;
 
 
     public void fight(int monsterNumber) {
-        Scanner userInput = new Scanner(System.in);
         enemyHp = monsterList[monsterNumber].hp;
         enemyName = monsterList[monsterNumber].name;
         enemyXp = monsterList[monsterNumber].xp;
-        int attackChoice;
-        while (enemyHp > 0) {
+        this.monsterNumber = monsterNumber;
+        while (enemyHp > 0 && Player.PlayerStats.hp > 0) {
 
             System.out.println("enemy hp: " + enemyHp);
+            System.out.println("your hp: " + Player.PlayerStats.hp);
             System.out.println("witch attack do you chose");
-            attackChoice = userInput.nextInt();
-            //array of possible attacks
-            // playerAttack();
-
-            monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
-
+            playerAttack(selectAttacks());
+            if (enemyHp > 0) {
+                System.out.println("the Monster attacks you");
+                monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
+            }
         }
     }
 
@@ -60,13 +59,13 @@ public class Attack {
                 attack = Integer.parseInt(monsterList[monsterNumber].attack.substring(4, 5));
             }
         } else {
-            amountOfDice=Integer.parseInt(monsterList[monsterNumber].attack.substring(0,2));
-            if (monsterList[monsterNumber].attack.substring(4,5).equals("+")){
-                diceSize=Integer.parseInt(monsterList[monsterNumber].attack.substring(3,4));
-                attack=Integer.parseInt(monsterList[monsterNumber].attack.substring(5,6));
-            }else if (monsterList[monsterNumber].attack.substring(5,6).equals("+")){
-                diceSize=Integer.parseInt(monsterList[monsterNumber].attack.substring(3,5));
-                attack=Integer.parseInt(monsterList[monsterNumber].attack.substring(6,8));
+            amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 2));
+            if (monsterList[monsterNumber].attack.substring(4, 5).equals("+")) {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(3, 4));
+                attack = Integer.parseInt(monsterList[monsterNumber].attack.substring(5, 6));
+            } else if (monsterList[monsterNumber].attack.substring(5, 6).equals("+")) {
+                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(3, 5));
+                attack = Integer.parseInt(monsterList[monsterNumber].attack.substring(6, 8));
 
             }
         }
@@ -77,9 +76,22 @@ public class Attack {
         return attack;
     }
 
-    private void selectAttacks() {
+    private int selectAttacks() {
+        Scanner userInput = new Scanner(System.in);
+        int attackChoice = 1;
+        int attack = 0;
         if (Player.playerChosenClass == 0) {   //Monk
+            Monk.abilityOptions();
+            System.out.println("for first option input 0. 1 and 2 cant be chosen because they are passive or out of combat abilitys");
+            while (attackChoice == 1 || attackChoice == 2) {
+                attackChoice = userInput.nextInt();
+            }
 
+            switch (attackChoice) {
+                case 0 -> attack = Monk.martialArts();
+                case 3 -> attack = Monk.flurryOfBlows();
+                case 4 -> deflectAttackMonk(monsterNumber);
+            }
 
         } else if (Player.playerChosenClass == 1) {     //Warlock
 
@@ -88,6 +100,7 @@ public class Attack {
         } else if (Player.playerChosenClass == 3) {     //Cleric
 
         }
+        return attack;
     }
 
     public void playerAttack(int attackRoll) {
@@ -95,7 +108,7 @@ public class Attack {
         if (this.enemyHp > 0) {
             System.out.println("you dealt " + attackRoll + " damage");
         } else {
-            System.out.println("you defetet " + enemyName + " you gained " + xp);
+            System.out.println("you defetet " + enemyName + " you gained " + enemyXp + " xp");
         }
 
     }
@@ -103,12 +116,15 @@ public class Attack {
     public void monsterAttack(int attackRoll) {
         Player.PlayerStats.hp -= attackRoll;
         System.out.println("you took " + attackRoll + " damage");
+        if (Player.PlayerStats.hp < 0) {
+            System.out.println("you died");
+        }
     }
 //       Attack.enemyHp=Monsters.mimic.hp;
 //       Attack.deflectAttackMonk(AllClasses.monk.deflectAttack(10,15,5,2));
 
-    public void deflectAttackMonk(int damage) {
-
+    public void deflectAttackMonk(int monsterNumber) {
+        int damage = Monk.deflectAttack(diceSelector(monsterNumber), monsterList[monsterNumber].dexterity);
         if (Monk.reducedDamage == true) {
             Player.PlayerStats.hp -= damage;
             System.out.println("you took " + damage + " damage");
