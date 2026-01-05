@@ -22,6 +22,7 @@ public class Weapons {
 //    10 Copper = 1 Silver
 //    10 Silver = 1 Gold
 
+    // Simple Melee Weapons
     public static Weapons club = new Weapons("Club", Dice.d(4), 10,
             2, "1d4");
     public static Weapons dagger = new Weapons("Dagger", Dice.d(4), 200,

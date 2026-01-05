@@ -2,6 +2,7 @@ package mechanics;
 
 import entetys.Monsters;
 import entetys.Player;
+import entetys.classes.Barbarian;
 import entetys.classes.Monk;
 
 import java.util.Scanner;
@@ -113,6 +114,8 @@ public class Attack {
         } else {
             System.out.println("you defetet " + enemyName + " you gained " + enemyXp + " xp");
         }
+
+
 
     }
 
