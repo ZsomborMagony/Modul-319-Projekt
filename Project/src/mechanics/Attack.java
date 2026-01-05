@@ -51,23 +51,23 @@ public class Attack {
 
     public static int diceSelector(int monsterNumber) {
         int amountOfDice;
-        int diceSize=0;
+        int diceSize = 0;
         int attack = 0;
         if (monsterList[monsterNumber].attack.substring(1, 2).equalsIgnoreCase("d")) {
             amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 1));
-            if (monsterList[monsterNumber].attack.substring(3, 4).equalsIgnoreCase("+")||
-            monsterList[monsterNumber].attack.substring(3,4).isEmpty()) {
-               if (monsterList[monsterNumber].attack.substring(4,5).equalsIgnoreCase("+"))
+            if (monsterList[monsterNumber].attack.substring(3, 4).equals("+")) {
                 diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 3));
-            } else {
-                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 4));
+                attack = Integer.parseInt(monsterList[monsterNumber].attack.substring(4, 5));
             }
         } else {
-            amountOfDice = Integer.parseInt(monsterList[monsterNumber].attack.substring(0, 2));
-            if (!monsterList[monsterNumber].attack.substring(3, 4).isEmpty()) {
-                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 3));
-            } else {
-                diceSize = Integer.parseInt(monsterList[monsterNumber].attack.substring(2, 4));
+            amountOfDice=Integer.parseInt(monsterList[monsterNumber].attack.substring(0,2));
+            if (monsterList[monsterNumber].attack.substring(4,5).equals("+")){
+                diceSize=Integer.parseInt(monsterList[monsterNumber].attack.substring(3,4));
+                attack=Integer.parseInt(monsterList[monsterNumber].attack.substring(5,6));
+            }else if (monsterList[monsterNumber].attack.substring(5,6).equals("+")){
+                diceSize=Integer.parseInt(monsterList[monsterNumber].attack.substring(3,5));
+                attack=Integer.parseInt(monsterList[monsterNumber].attack.substring(6,8));
+
             }
         }
         while (amountOfDice > 0) {

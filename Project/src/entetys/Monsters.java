@@ -59,6 +59,7 @@ public class Monsters {
     public static Monsters wyvern = new Monsters("wyvern", 110, 13, 19, 10, 16,
             5, 12, 6, "2d8+4");
     //Final Boss in der Dungeon 10. 10/10 Dungeons
-    public static Monsters spined_devil = new Monsters("spined_devil", 22, 13, 10, 15, 12, 11, 14, 8, "2d4");
+    public static Monsters spined_devil = new Monsters("spined_devil", 22, 13, 10, 15, 12,
+            11, 14, 8, "2d4");
     // Monster in der Dungeon 7. 7/10
 }
