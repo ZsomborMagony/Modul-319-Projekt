@@ -31,6 +31,7 @@ public class Attack {
 
 
     public void fight(int monsterNumber) {
+        int round=0;
         enemyHp = monsterList[monsterNumber].hp;
         enemyName = monsterList[monsterNumber].name;
         enemyXp = monsterList[monsterNumber].xp;
@@ -45,6 +46,7 @@ public class Attack {
                 System.out.println("the Monster attacks you");
                 monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
             }
+        round++;
         }
         Leveling.addExp();
     }
