@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         //MakeCharacter.makeCharakter();
         Attack attack =new Attack();
-        attack.fight(2);
+        attack.fight(0);
 
 
     }
