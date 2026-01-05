@@ -1,17 +1,8 @@
 package entetys.classes;
 
-import mechanics.Dice;
-import entetys.Player;
+import java.util.Scanner;
 
 public class Barbarian {
-
-    // Core
-    /*
-    Primary Ability: Strength
-    Hit Die: d12 per level
-    Armor: Light, Medium, Shields
-     */
-
 
     // Starting option
     /*
@@ -33,6 +24,7 @@ public class Barbarian {
     Ends on next turn
     Half Damage from enemies
     +Rage Attack Damage
+
     Short Rest (2 Turns) = +1
     Long Rest (10 Turns) = +all
 
@@ -91,4 +83,55 @@ public class Barbarian {
     /*
     strength = +4 and constitution = +4
      */
+
+    public boolean startingOptions;
+    public boolean rage;
+    public short rageLeft = 2;
+    public short rageRestTimeCounter;
+
+    public Barbarian(){
+
+    };
+
+    // !!! How can save the inventory inforamtion?
+    public boolean isStartingOptions(){
+        System.out.println("Starting options for Barbarian");
+        System.out.println("Option A");
+        System.out.println(" - 4 Handaxes");
+        System.out.println(" - 15 GP");
+        System.out.println(" ");
+
+        System.out.println("Option B");
+        System.out.println(" - 75 GP");
+        System.out.println(" ");
+
+        System.out.println("[1] Option A , [2] Option B ");
+        Scanner userInput = new Scanner(System.in);
+        int user = userInput.nextInt();
+
+        if (user==1){
+            startingOptions = true; //Option A
+        } else if (user==2) {
+            startingOptions = false; //Option b
+        } else {
+            System.out.println("Invalid Pick");
+        }
+
+        return startingOptions;
+    };
+
+    public void rageActivation(){
+        rage = false;
+//        if (rageLeft > 0 && ....armour........){
+//            rage = true;
+//            rageLeft -= 1;
+//            System.out.println("Rage activated");
+//        } else {
+//            System.out.println("You don't have any Rage left, wait until it recharge");
+//        }
+    };
+
+    public void rageRestTimeCalculator(short rageRestTimeCounter){
+        this.rageRestTimeCounter = rageRestTimeCounter;
+    };
 }

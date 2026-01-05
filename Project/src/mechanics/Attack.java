@@ -3,6 +3,7 @@ package mechanics;
 import entetys.AllClasses;
 import entetys.Monsters;
 import entetys.Player;
+import entetys.classes.Barbarian;
 import entetys.classes.Monk;
 
 //          attack example
@@ -14,6 +15,8 @@ public class Attack {
     public static void playerAttack(int attackRoll) {
         enemyHp -= attackRoll;
         System.out.println("you dealt " + attackRoll + " damage");
+
+
 
     }
 
