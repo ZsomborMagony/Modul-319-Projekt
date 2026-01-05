@@ -46,6 +46,7 @@ public class Attack {
                 monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
             }
         }
+        Leveling.addExp();
     }
 
     public static int diceSelector(int monsterNumber) {
