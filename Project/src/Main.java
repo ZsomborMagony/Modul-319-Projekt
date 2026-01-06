@@ -20,19 +20,6 @@ public class Main {
 //        }
 
         System.out.println(Weapons.club.name);
-        Barbarian.BarbarianRage.lvlRage();
-        Barbarian.BarbarianRage.rageActivation();
-        System.out.println("rageMax: " + Barbarian.rageMax);
-        System.out.println("rageLeft:" + Barbarian.rageLeft);
-        System.out.println("rageRestTimeCounter:" + Barbarian.rageRestTimeCounter);
-        System.out.println();
-
-        Attack Player1 = new Attack();
-        Player1.fight(0);
-
-        System.out.println("rageRestTimeCounter:" + Barbarian.rageRestTimeCounter);
-        System.out.println("round:" + Player1.round);
-        System.out.println("rageLeft:" + Barbarian.rageLeft);
 
 
     }

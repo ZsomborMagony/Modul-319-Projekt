@@ -1,7 +1,6 @@
 package entetys.classes;
 
 import entetys.Player;
-import mechanics.Attack;
 
 import java.util.Scanner;
 
@@ -23,8 +22,9 @@ public class Barbarian {
     Rage only if:-
     Armor Restriction: No Heavy Armor
 
-    Rage Effects:-
     Ends on next turn
+
+    Rage Effects:-
     Half Damage from enemies
     +Rage Attack Damage
 
@@ -94,6 +94,7 @@ public class Barbarian {
     public static short rageMax;
     public static short rageLeft = 2;
     public static short rageRestTimeCounter;
+    public static byte rageDamage = 2;
 
 
     // Constructor
@@ -144,21 +145,22 @@ public class Barbarian {
 
     public static class BarbarianRage{
         //inventory Needed!
-        public static void rageActivation(){
-            rage = false;
-            if (rageLeft > 0 /* && ....noHeavyArmour........*/){
-            rage = true;
-            rageLeft--;
-            rageRestTimeCounter = 0;
-            System.out.println("Rage activated");
+        public static void rageOnAndOff(){
+            if (rage == true){
+                rage = false;
+                System.out.println("Rage deactivated");
+                rageRestTimeCalculator();
+            } else if (rageLeft > 0 /* && ....noHeavyArmour........*/) {
+                rage = true;
+                rageLeft--;
+                rageRestTimeCounter = 0;
+                System.out.println("Rage activated");
             } else {
-            System.out.println("You don't have any Rage left, wait until it recharge");
+                System.out.println("You don't have any Rage left, wait until it recharge");
             }
-
-            rageRestTimeCalculator();
         };
 
-        public static void lvlRage(){
+        public static void lvlRageMax(){
             switch (Player.PlayerStats.level){
                 case 1, 2 -> rageMax = 2;
                 case 3, 4, 5 -> rageMax = 3;
@@ -178,6 +180,15 @@ public class Barbarian {
                 }
             }
 
+        };
+
+        public static int lvlRageDamage(){
+            switch (Player.PlayerStats.level) {
+                case 1, 2, 3, 4, 5, 6, 7, 8 -> rageDamage = 2;
+                case 9, 10, 11, 12, 13, 14, 15 -> rageDamage = 3;
+                default -> rageDamage = 6;
+            }
+            return rageDamage;
         };
     };
 }

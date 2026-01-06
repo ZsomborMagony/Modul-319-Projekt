@@ -112,20 +112,34 @@ public class Attack {
     }
 
     public void playerAttack(int attackRoll) {
-        this.enemyHp -= attackRoll;
-        if (this.enemyHp > 0) {
-            System.out.println("you dealt " + attackRoll + " damage");
+        if (Barbarian.rage){
+            this.enemyHp -= (attackRoll + Barbarian.BarbarianRage.lvlRageDamage());
         } else {
-            System.out.println("you defetet " + enemyName + " you gained " + enemyXp + " xp");
+            this.enemyHp -= attackRoll;
         }
 
-
-
+        if (this.enemyHp > 0 && Barbarian.rage){
+            System.out.println("you dealt " + (attackRoll + Barbarian.BarbarianRage.lvlRageDamage()) + " damage");
+        } else if (this.enemyHp > 0) {
+            System.out.println("you dealt " + attackRoll + " damage");
+        } else {
+            System.out.println("you defeated " + enemyName + " you gained " + enemyXp + " xp");
+        }
     }
 
     public void monsterAttack(int attackRoll) {
-        Player.PlayerStats.hp -= attackRoll;
-        System.out.println("you took " + attackRoll + " damage");
+        if (Barbarian.rage){
+            Player.PlayerStats.hp -= (attackRoll/2);
+        } else {
+            Player.PlayerStats.hp -= attackRoll;
+        }
+
+        if (Barbarian.rage){
+            System.out.println("you took " + (attackRoll/2) + " damage");
+        } else {
+            System.out.println("you took " + attackRoll + " damage");
+        }
+
         if (Player.PlayerStats.hp < 0) {
             System.out.println("you died");
         }
