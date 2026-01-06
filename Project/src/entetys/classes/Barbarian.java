@@ -1,5 +1,8 @@
 package entetys.classes;
 
+import entetys.Player;
+import mechanics.Attack;
+
 import java.util.Scanner;
 
 public class Barbarian {
@@ -84,17 +87,25 @@ public class Barbarian {
     strength = +4 and constitution = +4
      */
 
-    public boolean startingOptions;
-    public boolean rage;
-    public short rageLeft = 2;
-    public short rageRestTimeCounter;
 
+    // Variable
+    public static boolean startingOptions;
+    public static boolean rage;
+    public static short rageMax;
+    public static short rageLeft = 2;
+    public static short rageRestTimeCounter;
+
+
+    // Constructor
     public Barbarian(){
 
     };
 
-    // !!! How can save the inventory inforamtion?
-    public boolean isStartingOptions(){
+
+    // Methods
+
+    //inventory Needed!
+    public static void isStartingOptions(){
         System.out.println("Starting options for Barbarian");
         System.out.println("Option A");
         System.out.println(" - 4 Handaxes");
@@ -111,27 +122,62 @@ public class Barbarian {
 
         if (user==1){
             startingOptions = true; //Option A
+
+            System.out.println("You selected:");
+            System.out.println("Option A");
+            System.out.println(" - 4 Handaxes");
+            System.out.println(" - 15 GP");
+            System.out.println(" ");
+
         } else if (user==2) {
-            startingOptions = false; //Option b
+            startingOptions = false; //Option B
+
+            System.out.println("You selected:");
+            System.out.println("Option B");
+            System.out.println(" - 75 GP");
+            System.out.println(" ");
+
         } else {
             System.out.println("Invalid Pick");
         }
-
-        return startingOptions;
     };
 
-    public void rageActivation(){
-        rage = false;
-//        if (rageLeft > 0 && ....armour........){
-//            rage = true;
-//            rageLeft -= 1;
-//            System.out.println("Rage activated");
-//        } else {
-//            System.out.println("You don't have any Rage left, wait until it recharge");
-//        }
-    };
+    public static class BarbarianRage{
+        //inventory Needed!
+        public static void rageActivation(){
+            rage = false;
+            if (rageLeft > 0 /* && ....noHeavyArmour........*/){
+            rage = true;
+            rageLeft--;
+            rageRestTimeCounter = 0;
+            System.out.println("Rage activated");
+            } else {
+            System.out.println("You don't have any Rage left, wait until it recharge");
+            }
 
-    public void rageRestTimeCalculator(short rageRestTimeCounter){
-        this.rageRestTimeCounter = rageRestTimeCounter;
+            rageRestTimeCalculator();
+        };
+
+        public static void lvlRage(){
+            switch (Player.PlayerStats.level){
+                case 1, 2 -> rageMax = 2;
+                case 3, 4, 5 -> rageMax = 3;
+                case 6, 7, 8, 9, 10, 11 -> rageMax = 4;
+                case 12, 13, 14, 15, 16 -> rageMax = 5;
+                default -> rageMax = 6;
+            }
+        };
+
+        public static void rageRestTimeCalculator(){
+            if (rageLeft != rageMax){
+                if (rageRestTimeCounter == 2){
+                    rageLeft++;
+                } else if (rageRestTimeCounter == 10) {
+                    rageLeft = rageMax;
+                    rageRestTimeCounter = 0;
+                }
+            }
+
+        };
     };
 }
