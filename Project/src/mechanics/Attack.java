@@ -45,7 +45,7 @@ public class Attack {
             playerAttack(selectAttacks());
             if (enemyHp > 0) {
                 System.out.println("the Monster attacks you");
-                monsterAttack(diceSelector(monsterNumber));//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
+                monsterAttack(diceSelector(monsterNumber));
             }
             round++;
 
@@ -56,7 +56,7 @@ public class Attack {
         Leveling.addExp();
     }
 
-    public static int diceSelector(int monsterNumber) {
+    public static int diceSelector(int monsterNumber) {//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
         int amountOfDice;
         int diceSize = 0;
         int attack = 0;
