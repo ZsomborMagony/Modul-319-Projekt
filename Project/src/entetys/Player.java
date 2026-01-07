@@ -1,11 +1,12 @@
 package entetys;
 
 import mechanics.Dice;
+import mechanics.Inventory;
 
 import java.util.Scanner;
 
 public class Player {
-    public static int playerChosenClass=0;
+    public static int playerChosenClass = 0;
 
     public static String playerClass(String playerClass) {
 
@@ -59,7 +60,22 @@ public class Player {
         public static int hp = 20; //hitPoints
         public static int maxHp = 20;
         public static int xp = 0;
-        public static boolean rest=true;
+        public static boolean rest = true;
+        public static int armorClass = 0;
+
+        public static Inventory playerInventory = new Inventory();
+
+        void calculateAC() {
+            if (playerInventory.getEquipmentValue(1) != null) {
+                armorClass = 10 + statModifiers("dexterity");
+            } else {
+                armorClass = playerInventory.getArmorClassFromEquippedSlot(playerInventory.getEquipmentValue(1))
+                        + statModifiers("dexterity");
+            }
+            if (playerInventory.getEquipmentValue(2) != null) {
+                armorClass += 2;
+            }
+        }
 
         public static int statModifiers(String attribute) {
             int temp = 0;

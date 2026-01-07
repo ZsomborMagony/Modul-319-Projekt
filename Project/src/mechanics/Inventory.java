@@ -1,6 +1,7 @@
 package mechanics;
 
 import entetys.Armor;
+import entetys.Player;
 import entetys.Weapons;
 
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class Inventory {
             Weapons.shortbow,
             Weapons.sling
     };
-    Weapons[] heavyWeapons={
+    Weapons[] heavyWeapons = {
             Weapons.battleaxe,
             Weapons.flail,
             Weapons.glaive,
@@ -48,44 +49,43 @@ public class Inventory {
             Weapons.longbow,
             Weapons.net
     };
-    Armor[] lightArmor={
-      Armor.padded,
-      Armor.leather,
-      Armor.studdedLeather
+    Armor[] lightArmor = {
+            Armor.padded,
+            Armor.leather,
+            Armor.studdedLeather
     };
-    Armor[] mediumArmor={
+    Armor[] mediumArmor = {
             Armor.hide,
             Armor.chainShirt,
             Armor.scaleMail,
             Armor.breastplate,
             Armor.halfPlate
     };
-    Armor[] heavyArmor={
+    Armor[] heavyArmor = {
             Armor.ringMail,
             Armor.chainMail,
             Armor.splint,
             Armor.plate
     };
-    Armor[] shield ={
+    Armor[] shield = {
             Armor.shield
     };
-    Armor[][] armors={
+    Armor[][] armors = {
             lightArmor,
             mediumArmor,
             heavyArmor,
             shield
 
     };
-    Weapons[][] weapons={
+    Weapons[][] weapons = {
             simpleWeapons,
             heavyWeapons
     };
     String[] inventory = new String[10];
-    String[] equipped = new String[3];
+    String[] equipped = new String[3];//[0] Weapon [1] Armor [2] Shield
 
 
     public void openInventory() {
-        inventory[0]=weapons[1][1].name;
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
@@ -100,7 +100,12 @@ public class Inventory {
         }
     }
 
-   public void openEquipment() {
+    public String getEquipmentValue(int slot) {
+        String equipmentSlotValue = equipped[slot];
+        return equipmentSlotValue;
+    }
+
+    public void openEquipment() {
         System.out.println("equipped Items: ");
         for (String contens : equipped) {
             if (contens == null) {
@@ -115,20 +120,54 @@ public class Inventory {
         int choice;
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
-        for (int i=0;i<armors.length;i++){
-            for (int i1=0;i1<armors[i].length;i1++){
-                if (inventory[choice].equals(armors[i][i1].name)){
-                    equipped[2]=armors[i][i1].name;
+        for (int i = 0; i < armors.length; i++) {
+            for (int i1 = 0; i1 < armors[i].length; i1++) {
+                if (inventory[choice].equals(armors[i][i1].name)) {
+                    equipped[2] = armors[i][i1].name;
                 }
             }
         }
-        for (int i=0;i<weapons.length;i++){
-            for (int i1=0;i1<weapons[i].length;i1++){
-                if (inventory[choice].equals(weapons[i][i1].name)){
-                    equipped[0]=weapons[i][i1].name;
+        for (int i = 0; i < weapons.length; i++) {
+            for (int i1 = 0; i1 < weapons[i].length; i1++) {
+                if (inventory[choice].equals(weapons[i][i1].name)) {
+                    equipped[0] = weapons[i][i1].name;
                 }
             }
         }
+    }
+
+    public int getArmorClassFromEquippedSlot(String itemName) {
+
+        int armorClass = 0;
+
+        for (int i = 0; i < armors.length; i++) {
+            for (int i1 = 0; i1 < armors[i].length; i1++) {
+                if (itemName.equals(armors[i][i1].name)) {
+                    if (itemName.equals(armors[2][i1].name)) {
+                        armorClass = armors[i][i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
+                    } else {
+                        armorClass = armors[i][i1].armorClass;
+                    }
+                }
+            }
+        }
+        return armorClass;
+    }
+
+    public String getDamageRangeFromEquippedSlot(String itemName) {
+
+        String damageRange = null;
+
+        for (int i = 0; i < weapons.length; i++) {
+            for (int i1 = 0; i1 < weapons[i].length; i1++) {
+                if (itemName.equals(weapons[i][i1].name)) {
+
+                    damageRange = weapons[i][i1].damageRange;
+
+                }
+            }
+        }
+        return damageRange;
     }
 
     void sellItems() {

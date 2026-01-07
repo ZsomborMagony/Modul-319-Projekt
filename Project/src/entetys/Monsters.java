@@ -28,6 +28,7 @@ public class Monsters {
         this.wisdom = wisdom;
         this.charisma = charisma;
         this.attack = attack;
+        this.xp = xp;
     }
 
 

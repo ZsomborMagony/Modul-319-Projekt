@@ -1,4 +1,5 @@
 package entetys;
+
 import mechanics.Dice;
 
 public class Weapons {
