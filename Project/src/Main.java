@@ -1,23 +1,20 @@
-
-
 import entetys.Monsters;
 import entetys.Weapons;
-import entetys.classes.Barbarian;
+import entetys.classes.Monk;
+import mechanics.Attack;
+import mechanics.Dice;
+import mechanics.Inventory;
+import mechanics.MakeCharacter;
+
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         //MakeCharacter.makeCharakter();
-        System.out.println(Monsters.mimic);
+        Inventory inventory=new Inventory();
+       inventory.openInventory();
 
-//        Monster monsters = [Monsters dragon=new Monsters(),'b', 'c'. ];
-//
-//        Monster monsters[] = new Monster[10];
-//
-//        for(int i = 0; i < monsters.length; i++) {
-//            monsters[i] =
-//        }
-
-        System.out.println(Weapons.club.name);
 
     }
 }
