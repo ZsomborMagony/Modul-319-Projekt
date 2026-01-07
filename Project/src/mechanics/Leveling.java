@@ -51,7 +51,7 @@ public class Leveling {
         }
         if (placeholderLevel != Player.PlayerStats.level) {
             System.out.println("Congratulations you leveld up you are now level : " + Player.PlayerStats.level);
-            if (Player.PlayerStats.level == 4 || Player.PlayerStats.level == 6 || Player.PlayerStats.level == 12 ) {
+            if (Player.PlayerStats.level == 4 || Player.PlayerStats.level == 6 || Player.PlayerStats.level == 12) {
                 System.out.println("you gained 2 attribute points");
                 Player.PlayerStats.attributePoints += 2;
                 int count = 0;
