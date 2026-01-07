@@ -167,6 +167,14 @@ public class Attack {
     }
 
     public void monsterAttack(int attackRoll) {
+        switch (Player.playerChosenClass){
+            case 0->{Monk.unarmoredDefense();}
+//            case 1->{}
+//            case 2->{}
+//            case 3->{}
+            default -> {Player.PlayerStats.calculateAC();}
+        }
+
         int hitOrMiss = Dice.d(20);
         if (hitOrMiss >= Player.PlayerStats.armorClass) {
             Player.PlayerStats.hp -= attackRoll;

@@ -162,13 +162,13 @@ public class Monk {
     /*
         unarmored defense if no armor or shield base armor + dex modifier
     */
-    public int unarmoredDefense(boolean shieldOrArmor) {
-        int armorClass = 0;
-        if (shieldOrArmor == false) {
-            armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
+    public static void unarmoredDefense() {
+
+
+            Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
                     + Player.PlayerStats.statModifiers("wisdom");
-        }
-        return armorClass;
+
+
     }
 
 

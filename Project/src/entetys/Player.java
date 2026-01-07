@@ -65,7 +65,7 @@ public class Player {
 
         public static Inventory playerInventory = new Inventory();
 
-        void calculateAC() {
+      public static void calculateAC() {
             if (playerInventory.getEquipmentValue(1) != null) {
                 armorClass = 10 + statModifiers("dexterity");
             } else {
