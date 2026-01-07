@@ -66,7 +66,7 @@ public class Monk {
             "extra Attack"
     };
 
-   public static void attackAbilitys() {
+    public static void attackAbilitys() {
         if (levelToAbilitys() == 0) {
 
             for (int i = 0; i <= 1; i++) {
@@ -165,8 +165,8 @@ public class Monk {
     public static void unarmoredDefense() {
 
 
-            Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
-                    + Player.PlayerStats.statModifiers("wisdom");
+        Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
+                + Player.PlayerStats.statModifiers("wisdom");
 
 
     }

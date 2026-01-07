@@ -123,7 +123,7 @@ public class Attack {
         }
         if (!damageRange.substring(2, 3).equals("d")) {
 
-            if (damageRange.length()==3) {
+            if (damageRange.length() == 3) {
                 die = Integer.parseInt(damageRange.substring(2, 3));
             } else {
                 die = Integer.parseInt(damageRange.substring(2, 4));
@@ -167,12 +167,16 @@ public class Attack {
     }
 
     public void monsterAttack(int attackRoll) {
-        switch (Player.playerChosenClass){
-            case 0->{Monk.unarmoredDefense();}
+        switch (Player.playerChosenClass) {
+            case 0 -> {
+                Monk.unarmoredDefense();
+            }
 //            case 1->{}
 //            case 2->{}
 //            case 3->{}
-            default -> {Player.PlayerStats.calculateAC();}
+            default -> {
+                Player.PlayerStats.calculateAC();
+            }
         }
 
         int hitOrMiss = Dice.d(20);

@@ -117,6 +117,7 @@ public class Inventory {
     }
 
     void equipItem() {
+
         Scanner userInput = new Scanner(System.in);
         int choice;
         System.out.println("witch Item do you want to equip? (0-9)");
@@ -169,6 +170,39 @@ public class Inventory {
             }
         }
         return damageRange;
+    }
+
+    public void openChest() {
+
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Items in inventory:");
+        for (String contens : inventory) {
+            if (contens == null) {
+                contens = "empty";
+            }
+            System.out.println(contens);
+        }
+        System.out.println("do you want to take something?");
+        if (userInput.nextLine().equalsIgnoreCase("y")) {
+            System.out.println("which Item do you want to take 0-9");
+            int choice = userInput.nextInt();
+            for (int i = 0; i < Player.PlayerStats.playerInventory.inventory.length; i++) {
+                if (Player.PlayerStats.playerInventory.inventory[i] == null) {
+                    Player.PlayerStats.playerInventory.inventory[i] = inventory[choice];
+                    inventory[i] = null;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void addWeaponToInventory(int simpleOrHeavy, int weaponNr) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] == null) {
+                inventory[i] = weapons[simpleOrHeavy][weaponNr].name;
+                break;
+            }
+        }
     }
 
     void sellItems() {
