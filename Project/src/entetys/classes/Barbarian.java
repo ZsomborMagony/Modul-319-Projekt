@@ -137,7 +137,7 @@ public class Barbarian {
         }
     };
 
-    public static void abilities(){
+    public static void barbarianAbilities(){
         Scanner userInput = new Scanner(System.in);
         byte user;
 
@@ -147,7 +147,7 @@ public class Barbarian {
                 user = userInput.nextByte();
 
                 switch (user){
-                    case 1 -> BarbarianRage.rageOnAndOff();
+                    case 1 -> barbarianRage.rageOnAndOff();
                     case 2 -> unarmoredDefense();
                     default -> System.out.println("Invalid Entry");
                 }
@@ -157,7 +157,7 @@ public class Barbarian {
                 user = userInput.nextByte();
 
                 switch (user){
-                    case 1 -> BarbarianRage.rageOnAndOff();
+                    case 1 -> barbarianRage.rageOnAndOff();
                     case 2 -> unarmoredDefense();
                     default -> System.out.println("Invalid Entry");
                 }
@@ -173,7 +173,7 @@ public class Barbarian {
 
     };
 
-    public static class BarbarianRage{
+    public static class barbarianRage{
         //inventory Needed!
         public static void rageOnAndOff(){
             if (rage){
@@ -221,4 +221,6 @@ public class Barbarian {
             return rageDamage;
         };
     };
+
+
 }

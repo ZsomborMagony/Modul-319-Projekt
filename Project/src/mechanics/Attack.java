@@ -51,7 +51,7 @@ public class Attack {
 
             // Barbarian
             Barbarian.rageRestTimeCounter++;
-            Barbarian.BarbarianRage.rageRestTimeCalculator();
+            Barbarian.barbarianRage.rageRestTimeCalculator();
         }
         Leveling.addExp();
     }
@@ -113,13 +113,13 @@ public class Attack {
 
     public void playerAttack(int attackRoll) {
         if (Barbarian.rage){
-            this.enemyHp -= (attackRoll + Barbarian.BarbarianRage.lvlRageDamage());
+            this.enemyHp -= (attackRoll + Barbarian.barbarianRage.lvlRageDamage());
         } else {
             this.enemyHp -= attackRoll;
         }
 
         if (this.enemyHp > 0 && Barbarian.rage){
-            System.out.println("you dealt " + (attackRoll + Barbarian.BarbarianRage.lvlRageDamage()) + " damage");
+            System.out.println("you dealt " + (attackRoll + Barbarian.barbarianRage.lvlRageDamage()) + " damage");
         } else if (this.enemyHp > 0) {
             System.out.println("you dealt " + attackRoll + " damage");
         } else {
