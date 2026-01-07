@@ -88,14 +88,14 @@ public class Attack {
     private int selectAttacks() {
 
         Scanner userInput = new Scanner(System.in);
-        int attackChoice = 1;
+        int attackChoice = 0;
         int attack = 0;
 
         if (Player.playerChosenClass == 0) {   //Monk
 
             Monk.attackAbilitys();
             System.out.println("for first option input 0.");
-
+            attack=userInput.nextInt();
             switch (attackChoice) {
                 case 0 -> attack = Monk.martialArts();
                 case 1 -> attack = Monk.flurryOfBlows();
