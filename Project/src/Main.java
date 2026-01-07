@@ -1,10 +1,8 @@
 
 
 import entetys.Monsters;
-import entetys.Player;
 import entetys.Weapons;
 import entetys.classes.Barbarian;
-import mechanics.Attack;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +18,6 @@ public class Main {
 //        }
 
         System.out.println(Weapons.club.name);
-
 
     }
 }
