@@ -87,10 +87,11 @@ public class Attack {
         int attackChoice = 0;
         int attack = 0;
 
-        if (Player.playerChosenClass == 0) {   //Monk
-
-            Monk.attackAbilitys();
+        if (Player.playerChosenClass == 0) {
+            //Monk
             System.out.println("Weapon attack");
+            Monk.attackAbilitys();
+
             System.out.println("for first option input 0.");
             attack = userInput.nextInt();
             switch (attackChoice) {
@@ -122,7 +123,7 @@ public class Attack {
         }
         if (!damageRange.substring(2, 3).equals("d")) {
 
-            if (damageRange.substring(3, 4).isEmpty()) {
+            if (damageRange.length()==3) {
                 die = Integer.parseInt(damageRange.substring(2, 3));
             } else {
                 die = Integer.parseInt(damageRange.substring(2, 4));

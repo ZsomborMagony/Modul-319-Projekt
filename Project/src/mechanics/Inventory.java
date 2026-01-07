@@ -86,6 +86,7 @@ public class Inventory {
 
 
     public void openInventory() {
+
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
