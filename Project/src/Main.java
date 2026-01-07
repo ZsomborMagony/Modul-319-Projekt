@@ -12,8 +12,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //MakeCharacter.makeCharakter();
-        Inventory inventory=new Inventory();
-       inventory.openInventory();
+       Attack test =new Attack();
+       test.fight(0);
 
 
     }

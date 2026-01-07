@@ -33,6 +33,7 @@ public class Attack {
 
 
     public void fight(int monsterNumber) {
+
         enemyHp = monsterList[monsterNumber].hp;
         enemyName = monsterList[monsterNumber].name;
         enemyXp = monsterList[monsterNumber].xp;
@@ -85,20 +86,20 @@ public class Attack {
     }
 
     private int selectAttacks() {
+
         Scanner userInput = new Scanner(System.in);
         int attackChoice = 1;
         int attack = 0;
+
         if (Player.playerChosenClass == 0) {   //Monk
-            Monk.abilityOptions();
-            System.out.println("for first option input 0. 1 and 2 cant be chosen because they are passive or out of combat abilitys");
-            while (attackChoice == 1 || attackChoice == 2) {
-                attackChoice = userInput.nextInt();
-            }
+
+            Monk.attackAbilitys();
+            System.out.println("for first option input 0.");
 
             switch (attackChoice) {
                 case 0 -> attack = Monk.martialArts();
-                case 3 -> attack = Monk.flurryOfBlows();
-                case 4 -> deflectAttackMonk(monsterNumber);
+                case 1 -> attack = Monk.flurryOfBlows();
+                case 2 -> deflectAttackMonk(monsterNumber);
             }
 
         } else if (Player.playerChosenClass == 1) {     //Warlock
