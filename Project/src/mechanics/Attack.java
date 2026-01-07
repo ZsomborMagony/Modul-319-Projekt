@@ -41,7 +41,7 @@ public class Attack {
 
             System.out.println("enemy hp: " + enemyHp);
             System.out.println("your hp: " + Player.PlayerStats.hp);
-            System.out.println("witch attack do you chose");
+            System.out.println("which attack do you chose");
             playerAttack(selectAttacks());
             if (enemyHp > 0) {
                 System.out.println("the Monster attacks you");
@@ -104,6 +104,15 @@ public class Attack {
         } else if (Player.playerChosenClass == 1) {     //Warlock
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
+            Barbarian.barbarianAbilities();
+
+            switch (attackChoice){
+//                case 1 -> attack = Barbarian.barbarianRage.rage();
+                case 2 -> System.out.println("Not for attacks"); // Unarmored Defense
+//                case 3 -> attack = Barbarian.recklessAttack();
+//                case 4 -> attack = Barbarian.extraAttack();
+//                case 5 -> attack = Barbarian.feralInstinct();
+            }
 
         } else if (Player.playerChosenClass == 3) {     //Cleric
 
@@ -112,15 +121,9 @@ public class Attack {
     }
 
     public void playerAttack(int attackRoll) {
-        if (Barbarian.rage){
-            this.enemyHp -= (attackRoll + Barbarian.barbarianRage.lvlRageDamage());
-        } else {
-            this.enemyHp -= attackRoll;
-        }
+        this.enemyHp -= attackRoll;
 
-        if (this.enemyHp > 0 && Barbarian.rage){
-            System.out.println("you dealt " + (attackRoll + Barbarian.barbarianRage.lvlRageDamage()) + " damage");
-        } else if (this.enemyHp > 0) {
+        if (this.enemyHp > 0) {
             System.out.println("you dealt " + attackRoll + " damage");
         } else {
             System.out.println("you defeated " + enemyName + " you gained " + enemyXp + " xp");
@@ -128,17 +131,8 @@ public class Attack {
     }
 
     public void monsterAttack(int attackRoll) {
-        if (Barbarian.rage){
-            Player.PlayerStats.hp -= (attackRoll/2);
-        } else {
-            Player.PlayerStats.hp -= attackRoll;
-        }
-
-        if (Barbarian.rage){
-            System.out.println("you took " + (attackRoll/2) + " damage");
-        } else {
-            System.out.println("you took " + attackRoll + " damage");
-        }
+         Player.PlayerStats.hp -= attackRoll;
+         System.out.println("you took " + attackRoll + " damage");
 
         if (Player.PlayerStats.hp < 0) {
             System.out.println("you died");

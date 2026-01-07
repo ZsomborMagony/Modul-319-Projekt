@@ -80,12 +80,11 @@ public class Inventory {
             simpleWeapons,
             heavyWeapons
     };
-    String[] inventory = new String[10];
-    String[] equipped = new String[3];
+    public static String[] inventory = new String[10];
+    public static String[] equipped = new String[3];
 
 
     public void openInventory() {
-        inventory[0]=weapons[1][1].name;
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {

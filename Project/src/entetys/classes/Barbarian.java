@@ -1,5 +1,8 @@
 package entetys.classes;
 import entetys.Player;
+import entetys.Weapons;
+import mechanics.Inventory;
+
 import java.util.Scanner;
 
 public class Barbarian {
@@ -77,11 +80,12 @@ public class Barbarian {
 
     // Variable
     public static boolean startingOptions;
-    public static boolean rage;
+    public static boolean unarmoredDefense;
     public static short rageMax;
     public static short rageLeft = 2;
     public static short rageRestTimeCounter;
     public static byte rageDamage = 2;
+    static boolean loopUntilGameEnds = true;
 
 
     // Constructor
@@ -92,7 +96,15 @@ public class Barbarian {
 
     // Methods
 
-    //inventory Needed!
+    public static void start(){
+        while(loopUntilGameEnds){
+            unarmoredDefenseOff();
+            Barbarian.barbarianRage.lvlRageDamage();
+            Barbarian.barbarianRage.lvlRageMax();
+        }
+    }
+
+    //Geld System!!!
     public static void isStartingOptions(){
         System.out.println("Starting options for Barbarian");
         System.out.println("Option A");
@@ -114,9 +126,15 @@ public class Barbarian {
 
             System.out.println("You selected:");
             System.out.println("Option A");
-            System.out.println(" - 4 Handaxes");
+            System.out.println(" - Greataxe");
+            System.out.println(" - Handaxe");
             System.out.println(" - 15 GP");
             System.out.println(" ");
+
+            Inventory.inventory[0] = Weapons.greataxe.name;
+            Inventory.inventory[1] = Weapons.handaxe.name;
+
+
 
         } else if (user==2) {
             startingOptions = false; //Option B
@@ -133,55 +151,100 @@ public class Barbarian {
 
     public static void barbarianAbilities(){
         Scanner userInput = new Scanner(System.in);
-        byte user;
+        int user;
+        int attackChoice;
 
         switch (Player.PlayerStats.level){
             case 1 -> {
                 System.out.println("[1] Rage, [2] Unarmored Defense");
-                user = userInput.nextByte();
+                user = userInput.nextInt();
 
                 switch (user){
-                    case 1 -> barbarianRage.rageOnAndOff();
-                    case 2 -> unarmoredDefense();
+                    case 1 -> attackChoice = 1;
+                    case 2 -> attackChoice = 2;
                     default -> System.out.println("Invalid Entry");
                 }
             }
             case 2, 3, 4 ->{
                 System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack");
-                user = userInput.nextByte();
+                user = userInput.nextInt();
 
                 switch (user){
-                    case 1 -> barbarianRage.rageOnAndOff();
-                    case 2 -> unarmoredDefense();
+                    case 1 -> attackChoice = 1;
+                    case 2 -> attackChoice = 2;
+//                    case 3 -> attackChoice = 3;
                     default -> System.out.println("Invalid Entry");
                 }
             }
-            case 5, 6 -> System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack");
-            default -> System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack, [5] Feral Instinct");
+            case 5, 6 -> {
+                System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack");
+                user = userInput.nextInt();
+
+                switch (user){
+                    case 1 -> attackChoice = 1;
+                    case 2 -> attackChoice = 2;
+//                    case 3 -> attackChoice = 3;
+//                    case 4 -> attackChoice = 4;
+                    default -> System.out.println("Invalid Entry");
+                }
+            }
+            default -> {
+                System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack, [5] Feral Instinct");
+                user = userInput.nextInt();
+
+                switch (user) {
+                    case 1 -> attackChoice = 1;
+                    case 2 -> attackChoice = 2;
+//                    case 3 -> attackChoice = 3;
+//                    case 4 -> attackChoice = 4;
+//                    case 5 -> attackChoice = 5;
+                    default -> System.out.println("Invalid Entry");
+                }
+            }
         }
 
     }
 
 
-    public static void unarmoredDefense(){
-
+    public static int unarmoredDefenseOn(){
+        int armorClass = 0;
+        if (unarmoredDefense == false){
+            if (Inventory.equipped[1] == null){
+                unarmoredDefense = true;
+                armorClass = 10 + Player.PlayerStats.statModifiers("dexterity") + Player.PlayerStats.statModifiers("constitution");
+                System.out.println("Unarmored Defense activated");
+            }
+        }
+        return armorClass;
     };
 
+    public static void unarmoredDefenseOff(){ // Auto off, when Armor on
+        if (unarmoredDefense == true){
+            if (Inventory.equipped[1] != null){
+                unarmoredDefense = false;
+                System.out.println("Unarmored Defense deactivated");
+                System.out.println("You can only use Unarmored Defense without any armor wearing!!!");
+            }
+        }
+    }
+
     public static class barbarianRage{
-        //inventory Needed!
-        public static void rageOnAndOff(){
-            if (rage){
-                rage = false;
-                System.out.println("Rage deactivated");
-                rageRestTimeCalculator();
-            } else if (rageLeft > 0 /* && ....noHeavyArmour........*/) {
-                rage = true;
+
+        public static int rage(int attackRoll){
+            int attackDamage = 0;
+
+            if (rageLeft > 0 /*&&....noHeavyArmor......*/){
+                attackDamage = attackRoll + Barbarian.barbarianRage.lvlRageDamage();
                 rageLeft--;
                 rageRestTimeCounter = 0;
-                System.out.println("Rage activated");
+                System.out.println("Rage Activated");
             } else {
-                System.out.println("You don't have any Rage left, wait until it recharge");
+                System.out.println("Failed!");
+                System.out.println("(None Rages left) or (Heavy Armor is on)");
+                attackDamage = attackRoll;
             }
+
+            return attackDamage;
         };
 
         public static void lvlRageMax(){
@@ -215,6 +278,21 @@ public class Barbarian {
             return rageDamage;
         };
     };
+
+    public static int recklessAttack(int attackRoll){
+
+        return attackRoll;
+    };
+
+    public static int extraAttack(int attackRoll) {
+        attackRoll += attackRoll;
+        return attackRoll;
+    }
+
+    public static int feralInstinct(int attackRoll){
+
+        return attackRoll;
+    }
 
 
 
