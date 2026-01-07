@@ -49,29 +49,30 @@ public class Leveling {
         } else {
             Player.PlayerStats.level = 20;
         }
-    if (placeholderLevel!= Player.PlayerStats.level){
-        System.out.println("Congratulations you leveld up you are now level : "+ Player.PlayerStats.level);
-        if (Player.PlayerStats.level==4||Player.PlayerStats.level==6||Player.PlayerStats.level==12){
-            System.out.println("you gained 2 attribute points");
-            Player.PlayerStats.attributePoints+=2;
-            int count=0;
-            int choice;
-            Scanner userInput=new Scanner(System.in);
-            do {
-                System.out.println("On which stat do you want to spent the "
-                        + Player.PlayerStats.attributePoints + " points?");
-                count = 0;
-                for (String items : Player.PlayerStats.statNames) {
-                    System.out.println("(" + count + ")" + items);
-                    count++;
-                }
-                choice = userInput.nextInt();
+
+        if (placeholderLevel != Player.PlayerStats.level) {
+            System.out.println("Congratulations you leveld up you are now level : " + Player.PlayerStats.level);
+            if (Player.PlayerStats.level == 4 || Player.PlayerStats.level == 6 || Player.PlayerStats.level == 12) {
+                System.out.println("you gained 2 attribute points");
+                Player.PlayerStats.attributePoints += 2;
+                int count = 0;
+                int choice;
+                Scanner userInput = new Scanner(System.in);
+                do {
+                    System.out.println("On which stat do you want to spent the "
+                            + Player.PlayerStats.attributePoints + " points?");
+                    count = 0;
+                    for (String items : Player.PlayerStats.statNames) {
+                        System.out.println("(" + count + ")" + items);
+                        count++;
+                    }
+                    choice = userInput.nextInt();
 
 
-                Player.PlayerStats.distributionStart(choice);
-            } while (Player.PlayerStats.attributePoints > 0);
+                    Player.PlayerStats.distributionStart(choice);
+                } while (Player.PlayerStats.attributePoints > 0);
+            }
         }
-    }
 
     }
 }

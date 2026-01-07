@@ -1,7 +1,5 @@
 package entetys.classes;
-
 import entetys.Player;
-
 import java.util.Scanner;
 
 public class Barbarian {
@@ -82,10 +80,6 @@ public class Barbarian {
     1d and 1d rolls, chooses one,then 1d + dex
      */
 
-    //Primal Champion
-    /*
-    strength = +4 and constitution = +4
-     */
 
 
     // Variable
@@ -143,10 +137,46 @@ public class Barbarian {
         }
     };
 
+    public static void abilities(){
+        Scanner userInput = new Scanner(System.in);
+        byte user;
+
+        switch (Player.PlayerStats.level){
+            case 1 -> {
+                System.out.println("[1] Rage, [2] Unarmored Defense");
+                user = userInput.nextByte();
+
+                switch (user){
+                    case 1 -> BarbarianRage.rageOnAndOff();
+                    case 2 -> unarmoredDefense();
+                    default -> System.out.println("Invalid Entry");
+                }
+            }
+            case 2, 3, 4 ->{
+                System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack");
+                user = userInput.nextByte();
+
+                switch (user){
+                    case 1 -> BarbarianRage.rageOnAndOff();
+                    case 2 -> unarmoredDefense();
+                    default -> System.out.println("Invalid Entry");
+                }
+            }
+            case 5, 6 -> System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack");
+            default -> System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack, [5] Feral Instinct");
+        }
+
+    }
+
+
+    public static void unarmoredDefense(){
+
+    };
+
     public static class BarbarianRage{
         //inventory Needed!
         public static void rageOnAndOff(){
-            if (rage == true){
+            if (rage){
                 rage = false;
                 System.out.println("Rage deactivated");
                 rageRestTimeCalculator();
