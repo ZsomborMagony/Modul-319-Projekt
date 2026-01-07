@@ -14,7 +14,7 @@ public class Main {
         //MakeCharacter.makeCharakter();
         Inventory inventory=new Inventory();
        inventory.openInventory();
-
+inventory.openEquipment();
 
     }
 }
