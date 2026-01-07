@@ -31,13 +31,6 @@ public class Barbarian {
 
      */
 
-    // Weapons Mastery
-    /*
-    lvl 1-3 = 2 Weapons
-    lvl 4-9 = 3 Weapons
-    lvl 10-20 = 4 Weapons
-     */
-
     // Abilities
     /*
     lvl 1 [Rage, Unarmored Defense]
@@ -103,9 +96,10 @@ public class Barbarian {
     public static void isStartingOptions(){
         System.out.println("Starting options for Barbarian");
         System.out.println("Option A");
+        System.out.println(" - Greataxe");
         System.out.println(" - 4 Handaxes");
         System.out.println(" - 15 GP");
-        System.out.println(" ");
+        System.out.println();
 
         System.out.println("Option B");
         System.out.println(" - 75 GP");
@@ -221,6 +215,7 @@ public class Barbarian {
             return rageDamage;
         };
     };
+
 
 
 }
