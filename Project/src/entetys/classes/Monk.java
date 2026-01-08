@@ -66,6 +66,41 @@ public class Monk {
             "extra Attack"
     };
 
+    public static void attackAbilitys() {
+        if (levelToAbilitys() == 0) {
+
+            for (int i = 0; i <= 1; i++) {
+                if (i != 1 && i != 2) {
+                    System.out.println(abilitys[i] + " ");
+                }
+            }
+        } else if (levelToAbilitys() == 1) {
+
+            for (int i = 0; i <= 3; i++) {
+                if (i != 1 && i != 2) {
+                    System.out.println(abilitys[i] + " ");
+                }
+            }
+        } else if (levelToAbilitys() == 2) {
+
+            for (int i = 0; i <= 4; i++) {
+                if (i != 1 && i != 2) {
+                    System.out.println(abilitys[i] + " ");
+                }
+            }
+        } else if (levelToAbilitys() == 3) {
+
+            for (int i = 0; i <= 5; i++) {
+                if (i != 1 && i != 2) {
+                    System.out.println(abilitys[i] + " ");
+                }
+            }
+        } else {
+            System.out.println("invalid level");
+        }
+
+    }
+
     public static void abilityOptions() {
         if (levelToAbilitys() == 0) {
 
@@ -127,13 +162,13 @@ public class Monk {
     /*
         unarmored defense if no armor or shield base armor + dex modifier
     */
-    public int unarmoredDefense(boolean shieldOrArmor) {
-        int armorClass = 0;
-        if (shieldOrArmor == false) {
-            armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
-                    + Player.PlayerStats.statModifiers("wisdom");
-        }
-        return armorClass;
+    public static void unarmoredDefense() {
+
+
+        Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
+                + Player.PlayerStats.statModifiers("wisdom");
+
+
     }
 
 
@@ -152,7 +187,7 @@ public class Monk {
                 case 1 -> kiPoints = 0;
                 default -> {
                     kiPoints = level;
-                Player.PlayerStats.rest=false;
+                    Player.PlayerStats.rest = false;
                 }
             }
         }
