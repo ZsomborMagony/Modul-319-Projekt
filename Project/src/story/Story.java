@@ -7,15 +7,15 @@ public class Story {
         System.out.println("King: \n" +
                 "Well, well, well, look what we got here. The almighty hero of this kingdom reduced to such a state. I am a bit disappointed. I thought you would put up a much tougher fight but well it doesn’t matter.\n");
         System.out.println("Player: \n" +
-                "Why are you doing this? Why are you cooperating with the mosters? Why do you want to kill me?\n");
+                "Why are you doing this? Why are you cooperating with these monsters? Why do you want to kill me?\n");
         System.out.println("King: \n" +
-                "As to why I am doing this is because you are a big obstacle to my plans. You know it was such a pain in the ass trapping you here. You should have died long ago by my associate that I sent after you, but it doesn’t matter. You know these monster became quite handy in capturing you. Of course they can’t kill you because of your strength but they are extremely useful because of their numbers and annoying abilities.\n");
+                "As to why I am doing this is because you are a too big of an obstacle to my plans. You know it was such a pain in the ass trapping you here. You should have died long ago by my associate that I sent after you, but it doesn’t matter. You know these monster became quite handy in capturing you. Of course they can’t kill you because of your strength but they are extremely useful because of their numbers and annoying resilience.\n");
         System.out.println("Player: \n" +
                 "Are you controlling them?\n");
         System.out.println("King:\n" +
-                "Bravo, Bravo as expected from the great hero, you noticed it. Yes I am controlling them. It took months of preparations to be able to control this many monsters but as I see, it was all worth it.\n");
+                "Bravo as expected from the great hero, you noticed it. Yes I am controlling them. It took months of preparations to be able to control this many monsters but as I see, it was all worth it.\n");
         System.out.println("Player:\n" +
-                "What is this plan, that you are willing to kill your own soldiers that came with me. You can clearly see, that the people of this county are suffering from hunger, monster attacks and diseases. Why are you so desperate on killing me when I did nothing but good for the people of this country.\n");
+                "What is this plan, that you are willing to kill your own soldiers that came with me. You can clearly see, that the people of this county are suffering from hunger, monster attacks and diseases. Why are you so desperate on killing me even though I did nothing but good for the people of this country.\n");
         System.out.println("King:\n" +
                 "Money and Power. Everything is buyable with money. Everything is achievable with Power. Everything is about money and Power. It doesn’t matter what kind of methods you use to get them, because if you have them than you can do whatever you want.\n");
         System.out.println("Player:\n" +
@@ -28,15 +28,14 @@ public class Story {
                 "What is that thing? It is taking my powers and strength away.\n");
         System.out.println("King:\n" +
                 "I myself have little idea about this object, but all I need to know is that it is extremely powerful and is able to kill you.\n");
-        System.out.println("(You feal extremely weak and you nearly fainted)");
+        System.out.println("(You feal extremely weak and you realize that if this keeps up you will faint in no time)");
         System.out.println("King:\n" +
-                "HA!HA!HA!Ha! finally the great hero will die and I can finally do things without worrying about you interfering.\n");
+                "HA!HA!HA!Ha! finally the great hero will die and I can finally do my things without worrying about you interfering.\n");
         System.out.println("Player:\n" +
-                "Old King! Remember I will come to find you even if I am in hell. I will climb up from there to find you! \n");
+                "Old King! Remember I will come to find you even if I am in hell. I will climb up from there to find you and drag you down with me! \n");
         System.out.println("(You cough up a mouthful of blood)");
         System.out.println("(Before you faint, you hear a loud explosions and multiple people attacking)");
-        System.out.println("(In the end you faint because of exhaustion)");
-        System.out.println("");
+        System.out.println("(but in the end you faint because of exhaustion)");
 
         MakeCharacter.makeCharakter();
 
@@ -59,7 +58,7 @@ public class Story {
         System.out.println("Cleric Companion: It also seems like the power of Weapon Mastery and magic also became stronger.");
         System.out.println("Player: That’s good. At least I have something to use against the king and his monsters.");
         System.out.println("Barbarian Companion: Now that we checked your powers, we need you to become stronger and we have the best method for you.");
-        System.out.println("Cleric Companion: After your fight with the king strange dungeons appeared in the basement of the Adventurer’s Hall. We do not know how it appeared. All we know is that they are ranging from low level dungeons to high level ones and that there are 13 of them.");
+        System.out.println("Cleric Companion: After your fight with the king, strange dungeons appeared in the basement of the Adventurer’s Hall. We do not know how it appeared. All we know is that they are ranging from low level dungeons to high level ones and that there are 13 of them.");
         System.out.println("Barbarian Companion: What really strange is that 3 of them are sealed and there are no methods to get in there at the moment.");
         System.out.println("Player: It certainly is strange.");
         System.out.println("Mage Companion(traitor): Right now the goal is for you to become stronger and we will inform you when we find some useful information to these dungeon.");
