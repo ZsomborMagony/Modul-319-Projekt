@@ -1,6 +1,8 @@
 package entetys.classes;
+
 import entetys.Player;
 import entetys.Weapons;
+import mechanics.Attack;
 import mechanics.Inventory;
 
 import java.util.Scanner;
@@ -77,7 +79,6 @@ public class Barbarian {
      */
 
 
-
     // Variable
     public static boolean startingOptions;
     public static boolean unarmoredDefense;
@@ -89,15 +90,17 @@ public class Barbarian {
 
 
     // Constructor
-    public Barbarian(){
+    public Barbarian() {
 
-    };
+    }
+
+    ;
 
 
     // Methods
 
-    public static void start(){
-        while(loopUntilGameEnds){
+    public static void start() {
+        while (loopUntilGameEnds) {
             unarmoredDefenseOff();
             Barbarian.barbarianRage.lvlRageDamage();
             Barbarian.barbarianRage.lvlRageMax();
@@ -105,7 +108,7 @@ public class Barbarian {
     }
 
     //Geld System!!!
-    public static void isStartingOptions(){
+    public static void isStartingOptions() {
         System.out.println("Starting options for Barbarian");
         System.out.println("Option A");
         System.out.println(" - Greataxe");
@@ -121,7 +124,7 @@ public class Barbarian {
         Scanner userInput = new Scanner(System.in);
         int user = userInput.nextInt();
 
-        if (user==1){
+        if (user == 1) {
             startingOptions = true; //Option A
 
             System.out.println("You selected:");
@@ -131,12 +134,11 @@ public class Barbarian {
             System.out.println(" - 15 GP");
             System.out.println(" ");
 
-            Inventory.inventory[0] = Weapons.greataxe.name;
-            Inventory.inventory[1] = Weapons.handaxe.name;
+            Player.PlayerStats.playerInventory.addWeaponToInventory(1, 3);
+            Player.PlayerStats.playerInventory.addWeaponToInventory(0, 3);
 
 
-
-        } else if (user==2) {
+        } else if (user == 2) {
             startingOptions = false; //Option B
 
             System.out.println("You selected:");
@@ -147,29 +149,31 @@ public class Barbarian {
         } else {
             System.out.println("Invalid Pick");
         }
-    };
+    }
 
-    public static void barbarianAbilities(){
+    ;
+
+    public static void barbarianAbilities() {
         Scanner userInput = new Scanner(System.in);
         int user;
         int attackChoice;
 
-        switch (Player.PlayerStats.level){
+        switch (Player.PlayerStats.level) {
             case 1 -> {
                 System.out.println("[1] Rage, [2] Unarmored Defense");
                 user = userInput.nextInt();
 
-                switch (user){
+                switch (user) {
                     case 1 -> attackChoice = 1;
                     case 2 -> attackChoice = 2;
                     default -> System.out.println("Invalid Entry");
                 }
             }
-            case 2, 3, 4 ->{
+            case 2, 3, 4 -> {
                 System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack");
                 user = userInput.nextInt();
 
-                switch (user){
+                switch (user) {
                     case 1 -> attackChoice = 1;
                     case 2 -> attackChoice = 2;
 //                    case 3 -> attackChoice = 3;
@@ -180,7 +184,7 @@ public class Barbarian {
                 System.out.println("[1] Rage. [2] Unarmored Defense, [3] Reckless Attack, [4] Extra Attack");
                 user = userInput.nextInt();
 
-                switch (user){
+                switch (user) {
                     case 1 -> attackChoice = 1;
                     case 2 -> attackChoice = 2;
 //                    case 3 -> attackChoice = 3;
@@ -195,9 +199,9 @@ public class Barbarian {
                 switch (user) {
                     case 1 -> attackChoice = 1;
                     case 2 -> attackChoice = 2;
-//                    case 3 -> attackChoice = 3;
-//                    case 4 -> attackChoice = 4;
-//                    case 5 -> attackChoice = 5;
+                    case 3 -> attackChoice = 3;
+                    case 4 -> attackChoice = 4;
+                    case 5 -> attackChoice = 5;
                     default -> System.out.println("Invalid Entry");
                 }
             }
@@ -206,21 +210,21 @@ public class Barbarian {
     }
 
 
-    public static int unarmoredDefenseOn(){
+    public static void unarmoredDefenseOn() {
         int armorClass = 0;
-        if (unarmoredDefense == false){
-            if (Inventory.equipped[1] == null){
+        if (unarmoredDefense == false) {
+            if (Player.PlayerStats.playerInventory.getEquipmentValue(1) == null) {
                 unarmoredDefense = true;
                 armorClass = 10 + Player.PlayerStats.statModifiers("dexterity") + Player.PlayerStats.statModifiers("constitution");
                 System.out.println("Unarmored Defense activated");
             }
         }
-        return armorClass;
-    };
+        Player.PlayerStats.armorClass = armorClass;
+    }
 
-    public static void unarmoredDefenseOff(){ // Auto off, when Armor on
-        if (unarmoredDefense == true){
-            if (Inventory.equipped[1] != null){
+    public static void unarmoredDefenseOff() { // Auto off, when Armor on
+        if (unarmoredDefense == true) {
+            if (Player.PlayerStats.playerInventory.getEquipmentValue(1) != null) {
                 unarmoredDefense = false;
                 System.out.println("Unarmored Defense deactivated");
                 System.out.println("You can only use Unarmored Defense without any armor wearing!!!");
@@ -228,13 +232,14 @@ public class Barbarian {
         }
     }
 
-    public static class barbarianRage{
+    public static class barbarianRage {
 
-        public static int rage(int attackRoll){
+        public static int rage(int attackRoll) {
             int attackDamage = 0;
 
-            if (rageLeft > 0 /*&&....noHeavyArmor......*/){
-                attackDamage = attackRoll + Barbarian.barbarianRage.lvlRageDamage();
+
+            if (rageLeft > 0  /*&&Player.PlayerStats.playerInventory.*/) {
+                attackDamage = attackRoll + lvlRageDamage();
                 rageLeft--;
                 rageRestTimeCounter = 0;
                 System.out.println("Rage Activated");
@@ -245,21 +250,26 @@ public class Barbarian {
             }
 
             return attackDamage;
-        };
+        }
 
-        public static void lvlRageMax(){
-            switch (Player.PlayerStats.level){
+        ;
+
+        public static void lvlRageMax() {
+            switch (Player.PlayerStats.level) {
                 case 1, 2 -> rageMax = 2;
                 case 3, 4, 5 -> rageMax = 3;
                 case 6, 7, 8, 9, 10, 11 -> rageMax = 4;
                 case 12, 13, 14, 15, 16 -> rageMax = 5;
                 default -> rageMax = 6;
             }
-        };
+        }
 
-        public static void rageRestTimeCalculator(){
-            if (rageLeft != rageMax){
-                if (rageRestTimeCounter == 2){
+        ;
+
+        public static void rageRestTimeCalculator() {
+            lvlRageMax();
+            if (rageLeft != rageMax) {
+                if (rageRestTimeCounter == 2) {
                     rageLeft++;
                 } else if (rageRestTimeCounter == 10) {
                     rageLeft = rageMax;
@@ -267,33 +277,40 @@ public class Barbarian {
                 }
             }
 
-        };
+        }
 
-        public static int lvlRageDamage(){
+        ;
+
+        public static int lvlRageDamage() {
             switch (Player.PlayerStats.level) {
                 case 1, 2, 3, 4, 5, 6, 7, 8 -> rageDamage = 2;
                 case 9, 10, 11, 12, 13, 14, 15 -> rageDamage = 3;
                 default -> rageDamage = 6;
             }
             return rageDamage;
-        };
-    };
+        }
 
-    public static int recklessAttack(int attackRoll){
+        ;
+    }
+
+    ;
+
+    public static int recklessAttack(int attackRoll) {
 
         return attackRoll;
-    };
+    }
+
+    ;
 
     public static int extraAttack(int attackRoll) {
         attackRoll += attackRoll;
         return attackRoll;
     }
 
-    public static int feralInstinct(int attackRoll){
+    public static int feralInstinct(int attackRoll) {
 
         return attackRoll;
     }
-
 
 
 }
