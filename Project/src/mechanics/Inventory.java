@@ -49,6 +49,11 @@ public class Inventory {
             Weapons.longbow,
             Weapons.net
     };
+    Armor[] lightArmor2 = {
+            Armor.padded,
+            Armor.leather
+
+    };
     Armor[] lightArmor = {
             Armor.padded,
             Armor.leather,
@@ -120,12 +125,18 @@ public class Inventory {
 
         Scanner userInput = new Scanner(System.in);
         int choice;
+        System.out.println(lightArmor2[0].armorClass);
+        System.out.println(armors[0][0].name);
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
+
+
         for (int i = 0; i < armors.length; i++) {
             for (int i1 = 0; i1 < armors[i].length; i1++) {
-                if (inventory[choice].equals(armors[i][i1].name)) {
-                    equipped[2] = armors[i][i1].name;
+                if (armors[i][i1].name != null) {
+                    if (inventory[choice].equals(armors[i][i1].name)) {
+                        equipped[2] = armors[i][i1].name;
+                    }
                 }
             }
         }
@@ -201,6 +212,14 @@ public class Inventory {
             if (inventory[i] == null) {
                 inventory[i] = weapons[simpleOrHeavy][weaponNr].name;
                 break;
+            }
+        }
+    }
+
+    public void addArmorToInventory(int armorType, int armorNr) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] == null) {
+                inventory[i] = armors[armorType][armorNr].name;
             }
         }
     }
