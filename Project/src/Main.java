@@ -14,5 +14,6 @@ public class Main {
         chest.addWeaponToInventory(0,1);
         chest.openChest();
         Player.PlayerStats.playerInventory.openInventory();
+        Player.PlayerStats.playerInventory.openInventory();
     }
 }

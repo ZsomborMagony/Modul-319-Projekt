@@ -59,6 +59,7 @@ public class Inventory {
             Armor.leather,
             Armor.studdedLeather
     };
+
     Armor[] mediumArmor = {
             Armor.hide,
             Armor.chainShirt,
@@ -125,25 +126,25 @@ public class Inventory {
 
         Scanner userInput = new Scanner(System.in);
         int choice;
-        System.out.println(lightArmor2[0].armorClass);
-        System.out.println(armors[0][0].name);
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
 
 
-        for (int i = 0; i < armors.length; i++) {
-            for (int i1 = 0; i1 < armors[i].length; i1++) {
-                if (armors[i][i1].name != null) {
-                    if (inventory[choice].equals(armors[i][i1].name)) {
-                        equipped[2] = armors[i][i1].name;
-                    }
-                }
-            }
-        }
+//        for (int i = 0; i < armors.length; i++) {
+//            for (int i1 = 0; i1 < armors[i].length; i1++) {
+//                if (armors[i][i1].name != null) {
+//                    if (inventory[choice].equals(armors[i][i1].name)) {
+//                        equipped[2] = armors[i][i1].name;
+//                    }
+//                }
+//            }
+//        }
         for (int i = 0; i < weapons.length; i++) {
             for (int i1 = 0; i1 < weapons[i].length; i1++) {
                 if (inventory[choice].equals(weapons[i][i1].name)) {
                     equipped[0] = weapons[i][i1].name;
+                    inventory[choice]=null;
+                    break;
                 }
             }
         }
@@ -203,7 +204,7 @@ public class Inventory {
                     inventory[i] = null;
                     break;
                 }
-            }
+            }openChest();
         }
     }
 
