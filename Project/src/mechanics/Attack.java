@@ -107,15 +107,23 @@ public class Attack {
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
             Barbarian.barbarianAbilities();
+
+            attackChoice = Barbarian.barbarianAbilities();
             switch (attackChoice){
+                case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
+                        getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));
                 case 1 -> attack = Barbarian.barbarianRage.rage(weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 2 -> System.out.println("Not for attacks"); // Unarmored Defense
                 case 3 -> attack = Barbarian.recklessAttack(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                        weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 4 -> attack = Barbarian.extraAttack(weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 5 -> attack = Barbarian.feralInstinct(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                        weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
             }
 
