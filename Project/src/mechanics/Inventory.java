@@ -49,11 +49,6 @@ public class Inventory {
             Weapons.longbow,
             Weapons.net
     };
-    Armor[] lightArmor2 = {
-            Armor.padded,
-            Armor.leather
-
-    };
     Armor[] lightArmor = {
             Armor.padded,
             Armor.leather,
@@ -96,11 +91,11 @@ public class Inventory {
 
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
-        for (String contens : inventory) {
-            if (contens == null) {
-                contens = "empty";
+        for (String contents : inventory) {
+            if (contents == null) {
+                contents = "empty";
             }
-            System.out.println(contens);
+            System.out.println(contents);
         }
         System.out.println("do you want to equip something? Y/N");
         if (userInput.nextLine().equalsIgnoreCase("y")) {
