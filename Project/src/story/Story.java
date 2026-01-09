@@ -39,7 +39,6 @@ public class Story {
 
         MakeCharacter.makeCharakter();
 
-        System.out.println("Player: *Grunt*");
         System.out.println("(You wake up feeling weak and slightly lightheaded)");
         System.out.println("(You look around to see 3 similar faces that you recognize. You also realize that you are in the Adventure Hall)");
         System.out.println("(You remember, that they are the blurry figure you saw before fainting and your childhood friends)");
