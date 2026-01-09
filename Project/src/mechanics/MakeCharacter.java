@@ -14,9 +14,9 @@ public class MakeCharacter {
         int roll;
         String[] yesOrNo = {"(0) Yes", "(1) No"};
 
+        System.out.println("Please choose your class");
 
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Welcome to our Adventure please choose one of the following classes");
         for (String classOptions : classes) {
 
             System.out.println("(" + count + ") " + classOptions);

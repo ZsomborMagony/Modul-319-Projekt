@@ -6,9 +6,9 @@ public class AllClasses {
     public static String[] classes = {
 
             "Monk",
-            "Warlock",
+            "Warlock (WIP)",
             "Barbarian",
-            "Cleric"
+            "Cleric(WIP)"
     };
 
 

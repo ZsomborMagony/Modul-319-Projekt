@@ -1,5 +1,7 @@
 package entetys;
 
+import entetys.classes.Barbarian;
+import entetys.classes.Monk;
 import mechanics.Dice;
 import mechanics.Inventory;
 
@@ -64,6 +66,28 @@ public class Player {
         public static int armorClass = 0;
 
         public static Inventory playerInventory = new Inventory();
+
+        public static void rest(){
+            hp=maxHp;
+            Monk.regenKiPoints();
+            Barbarian.rageRestTimeCounter=10;
+            Barbarian.rageLeft=Barbarian.rageMax;
+            Barbarian.barbarianRage.rageRestTimeCalculatorReset();
+        }
+
+        public static void playerHpCalculate() {
+            int hitDie=0;
+            switch (playerChosenClass) {
+
+                case 0 ->hitDie=8;
+                case 3 ->hitDie=12;
+            }
+            if (level == 1) {
+                maxHp = hitDie + statModifiers("constitution");
+            } else {
+                maxHp += Dice.d(hitDie) + statModifiers("constitution");
+            }
+        }
 
         public static void calculateAC() {
             if (playerInventory.getEquipmentValue(1) != null) {

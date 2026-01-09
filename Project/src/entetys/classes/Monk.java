@@ -184,15 +184,15 @@ public class Monk {
     public static int regenKiPoints() {
         int level = Player.PlayerStats.level;
 
-        if (Player.PlayerStats.rest == true) {
+
             switch (level) {
                 case 1 -> kiPoints = 0;
                 default -> {
                     kiPoints = level;
-                    Player.PlayerStats.rest = false;
+
                 }
             }
-        }
+
         return kiPoints;
     }
 

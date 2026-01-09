@@ -206,7 +206,15 @@ public class Barbarian {
             }
         }
 
-        public static void rageRestTimeCalculator() {
+        public static void rageRestTimeCounter() {
+            long placeholderRound = 0;
+            if (placeholderRound != Attack.round) {
+                rageLeft--;
+                placeholderRound = Attack.round;
+            }
+        }
+
+        public static void rageRestTimeCalculatorReset() {
 //            Short Rest (2 Turns) = +1
 //            Long Rest (10 Turns) = +all
 
