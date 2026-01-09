@@ -143,10 +143,10 @@ public class Inventory {
                 }
             }
         }
-        for (int i = 0; i < weapons.length; i++) {
-            for (int i1 = 0; i1 < weapons[i].length; i1++) {
-                if (inventory[choice].equals(weapons[i][i1].name)) {
-                    equipped[0] = weapons[i][i1].name;
+        for (Weapons[] weapon : weapons) {
+            for (int i1 = 0; i1 < weapon.length; i1++) {
+                if (inventory[choice].equals(weapon[i1].name)) {
+                    equipped[0] = weapon[i1].name;
                     inventory[choice] = null;
                     break;
                 }
