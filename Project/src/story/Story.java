@@ -3,7 +3,7 @@ package story;
 import mechanics.MakeCharacter;
 
 public class Story {
-    public static void intro(){
+    public static void intro() {
         System.out.println("King: \n" +
                 "Well, well, well, look what we got here. The almighty hero of this kingdom reduced to such a state. I am a bit disappointed. I thought you would put up a much tougher fight but well it doesn’t matter.\n");
         System.out.println("Player: \n" +

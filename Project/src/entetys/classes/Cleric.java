@@ -244,7 +244,8 @@ public class Cleric {
             }
         }
     }
-//lv2
+
+    //lv2
     void divineSpark() {
         Scanner userInput = new Scanner(System.in);
         int temp;
@@ -273,11 +274,12 @@ public class Cleric {
             Attack.enemyHp -= roll;
         }
     }
+
     //7
     //adds 1d8 on weapon attack
-    int divineStrike(int damage){
+    int divineStrike(int damage) {
 
-        damage+=Dice.d(8);
+        damage += Dice.d(8);
         return damage;
     }
 

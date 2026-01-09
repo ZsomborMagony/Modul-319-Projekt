@@ -29,7 +29,6 @@ public class Barbarian {
 
     public static void start() {
         while (loopUntilGameEnds) {
-            unarmoredDefenseOff();
             Barbarian.barbarianRage.lvlRageDamage();
             Barbarian.barbarianRage.lvlRageMax();
         }
@@ -73,6 +72,7 @@ public class Barbarian {
             System.out.println("Option B");
             System.out.println(" - 75 GP");
             System.out.println(" ");
+            Player.PlayerStats.playerInventory.money[0] += 75;
 
         } else {
             System.out.println("Invalid Pick");
@@ -159,28 +159,6 @@ public class Barbarian {
     }
 
 
-    public static void unarmoredDefenseOn() {
-        int armorClass = 0;
-        if (unarmoredDefense == false) {
-            if (Player.PlayerStats.playerInventory.getEquipmentValue(1) == null) {
-                unarmoredDefense = true;
-                armorClass = 10 + Player.PlayerStats.statModifiers("dexterity") + Player.PlayerStats.statModifiers("constitution"); // Armour Class = 10 + dex + con
-                System.out.println("Unarmored Defense activated");
-            }
-        }
-        Player.PlayerStats.armorClass = armorClass;
-    }
-
-    public static void unarmoredDefenseOff() { // Auto off, when Armor on
-        {
-            if (Player.PlayerStats.playerInventory.getEquipmentValue(1) != null) {
-                unarmoredDefense = false;
-                System.out.println("Unarmored Defense deactivated");
-                System.out.println("You can only use Unarmored Defense without any armor wearing!!!");
-            }
-        }
-    }
-
     public static class barbarianRage {
 
 //        Rage only if:-
@@ -194,7 +172,7 @@ public class Barbarian {
             int attackDamage = 0;
 
 
-            if (rageLeft > 0  /*&&Player.PlayerStats.playerInventory.*/) {
+            if (rageLeft > 0 && Player.PlayerStats.playerInventory.getEquipmentValue(0) != null) {
                 attackDamage = attackRoll + lvlRageDamage();
                 rageLeft--;
                 rageRestTimeCounter = 0;
@@ -208,7 +186,7 @@ public class Barbarian {
             return attackDamage;
         }
 
-        public static void lvlRageMax(){
+        public static void lvlRageMax() {
             /*
             lvl 1, 2 = Total=2
             lvl 3, 4, 5 = Total=3
@@ -276,10 +254,11 @@ public class Barbarian {
         attackRoll += attackRoll;
         return attackRoll;
     }
+
     public static void unarmoredDefense() {
 
 
-        if (Player.PlayerStats.playerInventory.getEquipmentValue(1)!=null) {
+        if (Player.PlayerStats.playerInventory.getEquipmentValue(1) != null) {
             Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
                     + Player.PlayerStats.statModifiers("constitution");
         }

@@ -5,7 +5,8 @@ import entetys.Player;
 import java.util.Scanner;
 
 public class Leveling {
-    private static int placeholderLevel=1;
+    private static int placeholderLevel = 1;
+
     public static void addExp() {
 
         if (Player.PlayerStats.xp < 300) {

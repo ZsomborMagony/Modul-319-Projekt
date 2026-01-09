@@ -165,7 +165,7 @@ public class Monk {
     public static void unarmoredDefense() {
 
 
-        if (Player.PlayerStats.playerInventory.getEquipmentValue(1)!=null) {
+        if (Player.PlayerStats.playerInventory.getEquipmentValue(1) != null) {
             Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
                     + Player.PlayerStats.statModifiers("wisdom");
         }

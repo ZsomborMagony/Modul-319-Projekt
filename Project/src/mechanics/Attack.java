@@ -30,6 +30,7 @@ public class Attack {
     int monsterNumber;
     public long round = 0;
     int enemyAC = 0;
+    static int attackChoice;
 
 
     public void fight(int monsterNumber) {
@@ -85,7 +86,7 @@ public class Attack {
     private int selectAttacks() {
 
         Scanner userInput = new Scanner(System.in);
-        int attackChoice = 0;
+        attackChoice = 0;
         int attack = 0;
 
         if (Player.playerChosenClass == 0) {
@@ -109,22 +110,22 @@ public class Attack {
             Barbarian.barbarianAbilities();
 
             attackChoice = Barbarian.barbarianAbilities();
-            switch (attackChoice){
+            switch (attackChoice) {
                 case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
                         getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));
                 case 1 -> attack = Barbarian.barbarianRage.rage(weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 2 -> System.out.println("Not for attacks"); // Unarmored Defense
                 case 3 -> attack = Barbarian.recklessAttack(weaponDieSelector(Player.PlayerStats.playerInventory
-                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                                .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
                         weaponDieSelector(Player.PlayerStats.playerInventory
-                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+                                .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 4 -> attack = Barbarian.extraAttack(weaponDieSelector(Player.PlayerStats.playerInventory
                         .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
                 case 5 -> attack = Barbarian.feralInstinct(weaponDieSelector(Player.PlayerStats.playerInventory
-                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                                .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
                         weaponDieSelector(Player.PlayerStats.playerInventory
-                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+                                .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
             }
 
         } else if (Player.playerChosenClass == 3) {     //Cleric
@@ -194,7 +195,9 @@ public class Attack {
             }
 //            case 1->{}
 //            case 2->{}
-            case 3->{Barbarian.unarmoredDefense();}
+            case 3 -> {
+                Barbarian.unarmoredDefense();
+            }
             default -> {
                 Player.PlayerStats.calculateAC();
             }
@@ -202,6 +205,9 @@ public class Attack {
 
         int hitOrMiss = Dice.d(20);
         if (hitOrMiss >= Player.PlayerStats.armorClass) {
+            if (Player.playerChosenClass == 3 && attackChoice == 4) {
+                Player.PlayerStats.hp -= attackRoll + diceSelector(monsterNumber);
+            }
             Player.PlayerStats.hp -= attackRoll;
             System.out.println("you took " + attackRoll + " damage");
 

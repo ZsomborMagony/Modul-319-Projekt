@@ -6,7 +6,8 @@ public class ClericSpells {
             "Resistance",
             "Sacred Flame",
     };
-    void cantrips(){
+
+    void cantrips() {
 
     }
 
