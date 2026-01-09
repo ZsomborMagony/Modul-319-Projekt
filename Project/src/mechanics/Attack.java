@@ -2,6 +2,7 @@ package mechanics;
 
 import entetys.Monsters;
 import entetys.Player;
+import entetys.classes.Barbarian;
 import entetys.classes.Monk;
 
 import java.util.Scanner;
@@ -42,7 +43,7 @@ public class Attack {
 
             System.out.println("enemy hp: " + enemyHp);
             System.out.println("your hp: " + Player.PlayerStats.hp);
-            System.out.println("witch attack do you chose");
+            System.out.println("which attack do you chose");
             playerAttack(selectAttacks());
             if (enemyHp > 0) {
                 System.out.println("the Monster attacks you");
@@ -105,6 +106,26 @@ public class Attack {
         } else if (Player.playerChosenClass == 1) {     //Warlock
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
+            Barbarian.barbarianAbilities();
+
+            attackChoice = Barbarian.barbarianAbilities();
+            switch (attackChoice){
+                case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
+                        getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));
+                case 1 -> attack = Barbarian.barbarianRage.rage(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+                case 2 -> System.out.println("Not for attacks"); // Unarmored Defense
+                case 3 -> attack = Barbarian.recklessAttack(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                        weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+                case 4 -> attack = Barbarian.extraAttack(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+                case 5 -> attack = Barbarian.feralInstinct(weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))),
+                        weaponDieSelector(Player.PlayerStats.playerInventory
+                        .getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0))));
+            }
 
         } else if (Player.playerChosenClass == 3) {     //Cleric
 
