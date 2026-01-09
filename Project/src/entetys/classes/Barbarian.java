@@ -172,7 +172,7 @@ public class Barbarian {
     }
 
     public static void unarmoredDefenseOff() { // Auto off, when Armor on
-        if (unarmoredDefense == true) {
+        {
             if (Player.PlayerStats.playerInventory.getEquipmentValue(1) != null) {
                 unarmoredDefense = false;
                 System.out.println("Unarmored Defense deactivated");
@@ -275,6 +275,16 @@ public class Barbarian {
 
         attackRoll += attackRoll;
         return attackRoll;
+    }
+    public static void unarmoredDefense() {
+
+
+        if (Player.PlayerStats.playerInventory.getEquipmentValue(1)!=null) {
+            Player.PlayerStats.armorClass = 10 + Player.PlayerStats.statModifiers("dexterity")
+                    + Player.PlayerStats.statModifiers("constitution");
+        }
+
+
     }
 
     public static int feralInstinct(int attackRoll1, int attackRoll2) {

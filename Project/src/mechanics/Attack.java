@@ -194,7 +194,7 @@ public class Attack {
             }
 //            case 1->{}
 //            case 2->{}
-//            case 3->{}
+            case 3->{Barbarian.unarmoredDefense();}
             default -> {
                 Player.PlayerStats.calculateAC();
             }
