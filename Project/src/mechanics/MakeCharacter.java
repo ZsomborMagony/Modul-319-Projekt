@@ -1,9 +1,11 @@
 package mechanics;
 
-import entetys.AllClasses;
+
 import entetys.Player;
 
 import java.util.Scanner;
+
+
 
 import static entetys.AllClasses.classes;
 
@@ -29,8 +31,9 @@ public class MakeCharacter {
             }
 
         } while (choice < 0 || choice > 3);
-        System.out.println("you chose the Class " + Player.playerClass(""));
         Player.playerChosenClass = choice;
+        System.out.println("you chose the Class " + Player.playerClass());
+
 
         System.out.println("please chose your attributes or do you want to roll for them?");
         System.out.println("(1) chose");

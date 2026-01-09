@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class Player {
     public static int playerChosenClass = 0;
 
-    public static String playerClass(String playerClass) {
-
+    public static String playerClass() {
+        String playerClass = "";
         switch (playerChosenClass) {
             case 0 -> playerClass = "Monk";
             case 1 -> playerClass = "Warlock";
@@ -67,20 +67,20 @@ public class Player {
 
         public static Inventory playerInventory = new Inventory();
 
-        public static void rest(){
-            hp=maxHp;
+        public static void rest() {
+            hp = maxHp;
             Monk.regenKiPoints();
-            Barbarian.rageRestTimeCounter=10;
-            Barbarian.rageLeft=Barbarian.rageMax;
+            Barbarian.rageRestTimeCounter = 10;
+            Barbarian.rageLeft = Barbarian.rageMax;
             Barbarian.barbarianRage.rageRestTimeCalculatorReset();
         }
 
         public static void playerHpCalculate() {
-            int hitDie=0;
+            int hitDie = 0;
             switch (playerChosenClass) {
 
-                case 0 ->hitDie=8;
-                case 3 ->hitDie=12;
+                case 0 -> hitDie = 8;
+                case 3 -> hitDie = 12;
             }
             if (level == 1) {
                 maxHp = hitDie + statModifiers("constitution");
