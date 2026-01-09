@@ -130,20 +130,20 @@ public class Inventory {
         choice = userInput.nextInt();
 
 
-//        for (int i = 0; i < armors.length; i++) {
-//            for (int i1 = 0; i1 < armors[i].length; i1++) {
-//                if (armors[i][i1].name != null) {
-//                    if (inventory[choice].equals(armors[i][i1].name)) {
-//                        equipped[2] = armors[i][i1].name;
-//                    }
-//                }
-//            }
-//        }
+        for (int i = 0; i < armors.length; i++) {
+            for (int i1 = 0; i1 < armors[i].length; i1++) {
+                if (armors[i][i1].name != null) {
+                    if (inventory[choice].equals(armors[i][i1].name)) {
+                        equipped[2] = armors[i][i1].name;
+                    }
+                }
+            }
+        }
         for (int i = 0; i < weapons.length; i++) {
             for (int i1 = 0; i1 < weapons[i].length; i1++) {
                 if (inventory[choice].equals(weapons[i][i1].name)) {
                     equipped[0] = weapons[i][i1].name;
-                    inventory[choice]=null;
+                    inventory[choice] = null;
                     break;
                 }
             }
@@ -204,7 +204,8 @@ public class Inventory {
                     inventory[i] = null;
                     break;
                 }
-            }openChest();
+            }
+            openChest();
         }
     }
 
