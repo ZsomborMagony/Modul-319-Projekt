@@ -89,6 +89,7 @@ public class Inventory {
     };
     String[] inventory = new String[10];
     String[] equipped = new String[3];//[0] Weapon [1] Armor [2] Shield
+    int[] money = {0};
 
 
     public void openInventory() {
