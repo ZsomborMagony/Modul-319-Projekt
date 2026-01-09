@@ -7,7 +7,7 @@ import entetys.Weapons;
 import java.util.Scanner;
 
 public class Inventory {
-    Weapons[] simpleWeapons = {
+    final Weapons[] simpleWeapons = {
             Weapons.club,
             Weapons.dagger,
             Weapons.greatclub,
@@ -24,7 +24,7 @@ public class Inventory {
             Weapons.shortbow,
             Weapons.sling
     };
-    Weapons[] heavyWeapons = {
+    final Weapons[] heavyWeapons = {
             Weapons.battleaxe,
             Weapons.flail,
             Weapons.glaive,
@@ -49,41 +49,44 @@ public class Inventory {
             Weapons.longbow,
             Weapons.net
     };
-    Armor[] lightArmor = {
-            Armor.padded,
-            Armor.leather,
-            Armor.studdedLeather
-    };
+    final Armor[] lightArmor = new Armor[3];
 
-    Armor[] mediumArmor = {
-            Armor.hide,
-            Armor.chainShirt,
-            Armor.scaleMail,
-            Armor.breastplate,
-            Armor.halfPlate
-    };
-    Armor[] heavyArmor = {
-            Armor.ringMail,
-            Armor.chainMail,
-            Armor.splint,
-            Armor.plate
-    };
-    Armor[] shield = {
-            Armor.shield
-    };
-    Armor[][] armors = {
+    void fillArmor() {
+
+        lightArmor[0] = Armor.padded;
+        lightArmor[1] = Armor.leather;
+        lightArmor[2] = Armor.studdedLeather;
+
+        mediumArmor[0] = Armor.hide;
+        mediumArmor[1] = Armor.chainShirt;
+        mediumArmor[2] = Armor.scaleMail;
+        mediumArmor[3] = Armor.breastplate;
+        mediumArmor[4] = Armor.halfPlate;
+
+        heavyArmor[0] = Armor.ringMail;
+        heavyArmor[1] = Armor.chainMail;
+        heavyArmor[2] = Armor.splint;
+        heavyArmor[3] = Armor.plate;
+
+        shield[0]=Armor.shield;
+    }
+
+    final Armor[] mediumArmor = new Armor[5];
+    final Armor[] heavyArmor = new Armor[4];
+    final Armor[] shield = new Armor[1];
+    final Armor[][] armors = {
             lightArmor,
             mediumArmor,
             heavyArmor,
             shield
 
     };
-    Weapons[][] weapons = {
+    final Weapons[][] weapons = {
             simpleWeapons,
             heavyWeapons
     };
-    String[] inventory = new String[10];
-    String[] equipped = new String[3];//[0] Weapon [1] Armor [2] Shield
+    final String[] inventory = new String[10];
+    final String[] equipped = new String[3];//[0] Weapon [1] Armor [2] Shield
     public int[] money = {0};
 
 
@@ -104,8 +107,8 @@ public class Inventory {
     }
 
     public String getEquipmentValue(int slot) {
-        String equipmentSlotValue = equipped[slot];
-        return equipmentSlotValue;
+        return equipped[slot];
+
     }
 
     public void openEquipment() {
@@ -124,6 +127,7 @@ public class Inventory {
         int choice;
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
+        fillArmor();
 
 
         for (int i = 0; i < armors.length; i++) {
