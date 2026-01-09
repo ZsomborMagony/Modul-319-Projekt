@@ -80,6 +80,7 @@ void firstLeftRoom(){
     System.out.println("(you examine the guard he seems to have no sense of humor so you better pay and get on)");
     System.out.println("you give him the 15 gold and head inside");
     System.out.println();
+    village();
 }
 void village(){
     System.out.println("end of current content");

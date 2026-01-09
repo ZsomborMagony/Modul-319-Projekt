@@ -7,51 +7,55 @@ import entetys.Weapons;
 import java.util.Scanner;
 
 public class Inventory {
-    final Weapons[] simpleWeapons = {
-            Weapons.club,
-            Weapons.dagger,
-            Weapons.greatclub,
-            Weapons.handaxe,
-            Weapons.javelin,
-            Weapons.lightHammer,
-            Weapons.mace,
-            Weapons.quarterStaff,
-            Weapons.sickle,
-            Weapons.spear,
-            Weapons.unarmedStrike,
-            Weapons.crossbowLight,
-            Weapons.dart,
-            Weapons.shortbow,
-            Weapons.sling
-    };
-    final Weapons[] heavyWeapons = {
-            Weapons.battleaxe,
-            Weapons.flail,
-            Weapons.glaive,
-            Weapons.greataxe,
-            Weapons.greatsword,
-            Weapons.halberd,
-            Weapons.lance,
-            Weapons.longsword,
-            Weapons.maul,
-            Weapons.morningstar,
-            Weapons.pike,
-            Weapons.rapier,
-            Weapons.scimitar,
-            Weapons.shortsword,
-            Weapons.trident,
-            Weapons.warPick,
-            Weapons.warhammer,
-            Weapons.whip,
-            Weapons.blowgun,
-            Weapons.crossbowHand,
-            Weapons.crossbowHeavy,
-            Weapons.longbow,
-            Weapons.net
-    };
+    final Weapons[] simpleWeapons = new Weapons[15];
+    final Weapons[] heavyWeapons = new Weapons[23];
+
+
+  public void fillWeapons() {
+        simpleWeapons[0]=Weapons.club;
+        simpleWeapons[1]=Weapons.dagger;
+        simpleWeapons[2]=Weapons.greatclub;
+        simpleWeapons[3]=Weapons.handaxe;
+        simpleWeapons[4]=Weapons.javelin;
+        simpleWeapons[5]=Weapons.lightHammer;
+        simpleWeapons[6]=Weapons.mace;
+        simpleWeapons[7]=Weapons.quarterStaff;
+        simpleWeapons[8]=Weapons.sickle;
+        simpleWeapons[9]=Weapons.spear;
+        simpleWeapons[10]=Weapons.unarmedStrike;
+        simpleWeapons[11]=Weapons.crossbowLight;
+        simpleWeapons[12]=Weapons.dart;
+        simpleWeapons[13]=Weapons.shortbow;
+        simpleWeapons[14]=Weapons.sling;
+        heavyWeapons[0] =Weapons.battleaxe;
+        heavyWeapons[1] =Weapons.flail;
+        heavyWeapons[2] =Weapons.glaive;
+        heavyWeapons[3] =Weapons.greataxe;
+        heavyWeapons[4] =Weapons.greatsword;
+        heavyWeapons[5] =Weapons.halberd;
+        heavyWeapons[6] =Weapons.lance;
+        heavyWeapons[7] =Weapons.longsword;
+        heavyWeapons[8] =Weapons.maul;
+        heavyWeapons[9] =Weapons.morningstar;
+        heavyWeapons[10] =Weapons.pike;
+        heavyWeapons[11] =Weapons.rapier;
+        heavyWeapons[12] =Weapons.scimitar;
+        heavyWeapons[13] =Weapons.shortsword;
+        heavyWeapons[14] =Weapons.trident;
+        heavyWeapons[15] =Weapons.warPick;
+        heavyWeapons[16] =Weapons.warhammer;
+        heavyWeapons[17] =Weapons.whip;
+        heavyWeapons[18] =Weapons.blowgun;
+        heavyWeapons[19] =Weapons.crossbowHand;
+        heavyWeapons[20] =Weapons.crossbowHeavy;
+        heavyWeapons[21] =Weapons.longbow;
+        heavyWeapons[22] =Weapons.net;
+
+    }
+
     final Armor[] lightArmor = new Armor[3];
 
-    void fillArmor() {
+   public void fillArmor() {
 
         lightArmor[0] = Armor.padded;
         lightArmor[1] = Armor.leather;
@@ -128,7 +132,7 @@ public class Inventory {
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
         fillArmor();
-
+        fillWeapons();
 
         for (int i = 0; i < armors.length; i++) {
             for (int i1 = 0; i1 < armors[i].length; i1++) {
@@ -153,6 +157,7 @@ public class Inventory {
     public int getArmorClassFromEquippedSlot(String itemName) {
 
         int armorClass = 0;
+        fillArmor();
 
         for (int i = 0; i < armors.length; i++) {
             for (int i1 = 0; i1 < armors[i].length; i1++) {
@@ -169,7 +174,7 @@ public class Inventory {
     }
 
     public String getDamageRangeFromEquippedSlot(String itemName) {
-
+        fillWeapons();
         String damageRange = null;
 
         for (int i = 0; i < weapons.length; i++) {
@@ -185,7 +190,8 @@ public class Inventory {
     }
 
     public void openChest() {
-
+fillWeapons();
+fillArmor();
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
@@ -201,7 +207,7 @@ public class Inventory {
             for (int i = 0; i < Player.PlayerStats.playerInventory.inventory.length; i++) {
                 if (Player.PlayerStats.playerInventory.inventory[i] == null) {
                     Player.PlayerStats.playerInventory.inventory[i] = inventory[choice];
-                    inventory[i] = null;
+                    inventory[choice] = null;
                     break;
                 }
             }
@@ -210,6 +216,8 @@ public class Inventory {
     }
 
     public void addWeaponToInventory(int simpleOrHeavy, int weaponNr) {
+        fillWeapons();
+        fillArmor();
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = weapons[simpleOrHeavy][weaponNr].name;
