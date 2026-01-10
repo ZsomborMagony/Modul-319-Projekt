@@ -110,8 +110,7 @@ public class Attack {
         } else if (Player.playerChosenClass == 1) {     //Warlock
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
-            Barbarian.barbarianAbilities();
-
+            System.out.println("[0] normal attack");
             attackChoice = Barbarian.barbarianAbilities();
             switch (attackChoice) {
                 case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
