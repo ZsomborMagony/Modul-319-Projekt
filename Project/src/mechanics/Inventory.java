@@ -144,12 +144,13 @@ public class Inventory {
             }
         }
         for (Weapons[] weapon : weapons) {
-            for (int i1 = 0; i1 < weapon.length; i1++) {
-                if (inventory[choice].equals(weapon[i1].name)) {
-                    equipped[0] = weapon[i1].name;
+            for (Weapons value : weapon) {
+                if (inventory[choice]!=null) {
+                if (inventory[choice].equals(value.name)) {
+                    equipped[0] = value.name;
                     inventory[choice] = null;
                     break;
-                }
+                }}
             }
         }
     }
@@ -161,12 +162,13 @@ public class Inventory {
 
         for (int i = 0; i < armors.length; i++) {
             for (int i1 = 0; i1 < armors[i].length; i1++) {
+                if (itemName!=null) {
                 if (itemName.equals(armors[i][i1].name)) {
                     if (itemName.equals(armors[2][i1].name)) {
                         armorClass = armors[i][i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
                     } else {
                         armorClass = armors[i][i1].armorClass;
-                    }
+                    }}
                 }
             }
         }
