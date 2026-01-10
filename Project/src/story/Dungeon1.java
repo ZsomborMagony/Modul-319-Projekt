@@ -7,10 +7,10 @@ import mechanics.Leveling;
 import java.util.Scanner;
 
 public class Dungeon1 {
-    Attack dungeon1Fight=new Attack();
-    Scanner userInput = new Scanner(System.in);
+    final Attack dungeon1Fight=new Attack();
+    final Scanner userInput = new Scanner(System.in);
     int choice;
-   public static Dungeon1 dungeon1 = new Dungeon1();
+   public static final Dungeon1 dungeon1 = new Dungeon1();
    public void enterDungeon1(){
        Player.PlayerStats.rest();
         System.out.println("(you enter into the first room of the dungeon you see a path ahead which splits two paths)");

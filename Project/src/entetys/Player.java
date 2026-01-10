@@ -25,25 +25,20 @@ public class Player {
     public class PlayerStats {
 
 
-        public static String[] statNames = {"Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom",
+        public static final String[] statNames = {"Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom",
                 "Charisma"};
 
         public static void stats() {
 
             // player stats output
             for (String items : statNames) {
-                if (items.equals("Strength")) {
-                    System.out.println(items + ": " + playerStrength);
-                } else if (items.equals("Dexterity")) {
-                    System.out.println(items + ": " + playerDexterity);
-                } else if (items.equals("Constitution")) {
-                    System.out.println(items + ": " + playerConstitution);
-                } else if (items.equals("Intelligence")) {
-                    System.out.println(items + ": " + playerIntelligence);
-                } else if (items.equals("Wisdom")) {
-                    System.out.println(items + ": " + playerWisdom);
-                } else if (items.equals("Charisma")) {
-                    System.out.println(items + ": " + playerCharisma);
+                switch (items) {
+                    case "Strength" -> System.out.println(items + ": " + playerStrength);
+                    case "Dexterity" -> System.out.println(items + ": " + playerDexterity);
+                    case "Constitution" -> System.out.println(items + ": " + playerConstitution);
+                    case "Intelligence" -> System.out.println(items + ": " + playerIntelligence);
+                    case "Wisdom" -> System.out.println(items + ": " + playerWisdom);
+                    case "Charisma" -> System.out.println(items + ": " + playerCharisma);
                 }
             }
         }
@@ -65,7 +60,7 @@ public class Player {
         public static boolean rest = true;
         public static int armorClass = 0;
 
-        public static Inventory playerInventory = new Inventory();
+        public static final Inventory playerInventory = new Inventory();
 
         public static void rest() {
             hp = maxHp;

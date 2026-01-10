@@ -45,7 +45,7 @@ public class Story {
         System.out.println("King: " +
                 "I myself have little idea about this object, but all I need to know is that it is extremely" +
                 "powerful and is able to kill you.");
-        System.out.println("(You feal extremely weak and you realize that if this keeps up you will faint in no time)");
+        System.out.println("(You feel extremely weak and you realize that if this keeps up you will faint in no time)");
         System.out.println("King: " +
                 "HA!HA!HA!Ha! finally the great hero will die and I can finally do my things without " +
                 "worrying about you interfering.");

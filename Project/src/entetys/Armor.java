@@ -1,7 +1,5 @@
 package entetys;
 
-import mechanics.Dice;
-
 public class Armor {
 
     public String name = "test";
@@ -23,37 +21,37 @@ public class Armor {
     //    10 Silver = 1 Gold
 
     // Light Armor
-    public static Armor padded = new Armor("Padded", 500, 11
+    public static final Armor padded = new Armor("Padded", 500, 11
             + Player.PlayerStats.statModifiers("dexterity"), 0, 8);
-    public static Armor leather = new Armor("Leather", 1000, 11
+    public static final Armor leather = new Armor("Leather", 1000, 11
             + Player.PlayerStats.statModifiers("dexterity"), 0, 10);
-    public static Armor studdedLeather = new Armor("Studded Leather", 4500, 12
+    public static final Armor studdedLeather = new Armor("Studded Leather", 4500, 12
             + Player.PlayerStats.statModifiers("dexterity"), 0, 13);
 
     // Medium Armor
-    public static Armor hide = new Armor("Hide", 1000, 12
+    public static final Armor hide = new Armor("Hide", 1000, 12
             + Player.PlayerStats.statModifiers("dexterity"), 0, 12);
-    public static Armor chainShirt = new Armor("Chain Shirt", 5000, 13
+    public static final Armor chainShirt = new Armor("Chain Shirt", 5000, 13
             + Player.PlayerStats.statModifiers("dexterity"), 0, 20);
-    public static Armor scaleMail = new Armor("Scale Mail", 5000, 14
+    public static final Armor scaleMail = new Armor("Scale Mail", 5000, 14
             + Player.PlayerStats.statModifiers("dexterity"), 0, 45);
-    public static Armor breastplate = new Armor("Breastplate", 40000, 14
+    public static final Armor breastplate = new Armor("Breastplate", 40000, 14
             + Player.PlayerStats.statModifiers("dexterity"), 0, 20);
-    public static Armor halfPlate = new Armor("Half Plate", 75000, 15
+    public static final Armor halfPlate = new Armor("Half Plate", 75000, 15
             + Player.PlayerStats.statModifiers("dexterity"), 0, 40);
 
     // Heavy Armor
-    public static Armor ringMail = new Armor("Ring Mail", 3000, 14, 0,
+    public static final Armor ringMail = new Armor("Ring Mail", 3000, 14, 0,
             40);
-    public static Armor chainMail = new Armor("Chain Mail", 7500, 16, 13,
+    public static final Armor chainMail = new Armor("Chain Mail", 7500, 16, 13,
             55);
-    public static Armor splint = new Armor("Splint", 20000, 17, 15,
+    public static final Armor splint = new Armor("Splint", 20000, 17, 15,
             60);
-    public static Armor plate = new Armor("Plate", 150000, 18, 15,
+    public static final Armor plate = new Armor("Plate", 150000, 18, 15,
             65);
 
     // Shield
-    public static Armor shield = new Armor("Shield", 1000, 2, 0,
+    public static final Armor shield = new Armor("Shield", 1000, 2, 0,
             6);
 
 

@@ -5,7 +5,7 @@ import entetys.Player;
 import java.util.Scanner;
 
 public class Leveling {
-    private static int placeholderLevel = 1;
+    private static final int placeholderLevel = 1;
 
     public static void addExp() {
 
@@ -51,7 +51,7 @@ public class Leveling {
             Player.PlayerStats.level = 20;
         }
         if (placeholderLevel != Player.PlayerStats.level) {
-            System.out.println("Congratulations you leveld up you are now level : " + Player.PlayerStats.level);
+            System.out.println("Congratulations you leveled up you are now level : " + Player.PlayerStats.level);
             if (Player.PlayerStats.level == 4 || Player.PlayerStats.level == 6 || Player.PlayerStats.level == 12) {
                 System.out.println("you gained 2 attribute points");
                 Player.PlayerStats.attributePoints += 2;

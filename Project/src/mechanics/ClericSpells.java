@@ -1,7 +1,7 @@
 package mechanics;
 
 public class ClericSpells {
-    String cantrips[] = {
+    String[] cantrips = {
             "Guidance",
             "Resistance",
             "Sacred Flame",
