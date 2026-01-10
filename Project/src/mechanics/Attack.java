@@ -111,7 +111,8 @@ public class Attack {
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
             System.out.println("[0] normal attack");
-            attackChoice = Barbarian.barbarianAbilities();
+            Barbarian.barbarianAttackAbilities();
+            attackChoice=userInput.nextInt();
             switch (attackChoice) {
                 case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
                         getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));

@@ -12,7 +12,7 @@ public class Dungeon1 {
     int choice;
    public static Dungeon1 dungeon1 = new Dungeon1();
    public void enterDungeon1(){
-
+       Player.PlayerStats.rest();
         System.out.println("(you enter into the first room of the dungeon you see a path ahead which splits two paths)");
         System.out.println("(do you chose the right path witch goes slightly down hill or ");
         System.out.println("do you choose the left one from where you feel a slight draft and hear a fait " +
