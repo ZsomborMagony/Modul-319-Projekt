@@ -6,7 +6,6 @@ import entetys.Player;
 import java.util.Scanner;
 
 
-
 import static entetys.AllClasses.classes;
 
 public class MakeCharacter {

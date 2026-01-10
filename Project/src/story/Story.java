@@ -7,31 +7,31 @@ import mechanics.MakeCharacter;
 public class Story {
     public static void intro() {
         System.out.println("King: " +
-                "Well, well, well, look what we got here. The almighty hero of this kingdom reduced to such a state. " +
-                "I am a bit disappointed. I thought you would put up a much tougher fight but well it doesn’t matter.");
+                "Well, well, well, look what we got here. The almighty hero of this kingdom reduced to such a state. ");
+        System.out.println("I am a bit disappointed. I thought you would put up a much tougher fight but well it doesn’t matter.");
         System.out.println("Player: " +
                 "Why are you doing this? Why are you cooperating with these monsters? Why do you want to kill me?");
         System.out.println("King: " +
-                "As to why I am doing this is because you are a too big of an obstacle to my plans. You know it was such" +
-                " a pain in the ass trapping you here. You should have died long ago by my associate that I sent after " +
-                "you, but it doesn’t matter. You know these monster became quite handy in capturing you. Of course they" +
-                " can’t kill you because of your strength but they are extremely useful because of their numbers and " +
-                "annoying resilience.");
+                "As to why I am doing this is because you are a too big of an obstacle to my plans. You know it was such");
+        System.out.println(" a pain in the ass trapping you here. You should have died long ago by my associate that I sent after ");
+        System.out.println("you, but it doesn’t matter. You know these monster became quite handy in capturing you. Of course they");
+        System.out.println(" can’t kill you because of your strength but they are extremely useful because of their numbers and ");
+        System.out.println("annoying resilience.");
         System.out.println("Player: " +
                 "Are you controlling them? ");
         System.out.println("King: " +
-                "Bravo as expected from the great hero, you noticed it. Yes I am controlling them. " +
-                "It took months of preparations to be able to control this many monsters but as I see," +
+                "Bravo as expected from the great hero, you noticed it. Yes I am controlling them. ");
+        System.out.println("It took months of preparations to be able to control this many monsters but as I see," +
                 " it was all worth it.");
         System.out.println("Player: " +
-                "What is this plan, that you are willing to kill your own soldiers that came with me." +
-                " You can clearly see, that the people of this county are suffering from hunger," +
-                " monster attacks and diseases. Why are you so desperate on killing me even though" +
-                " I did nothing but good for the people of this country.");
+                "What is this plan, that you are willing to kill your own soldiers that came with me.");
+        System.out.println(" You can clearly see, that the people of this county are suffering from hunger,");
+        System.out.println(" monster attacks and diseases. Why are you so desperate on killing me even though");
+        System.out.println(" I did nothing but good for the people of this country.");
         System.out.println("King: " +
-                "Money and Power. Everything is buyable with money. Everything is achievable with Power. Everything is" +
-                " about money and Power. It doesn’t matter what kind of methods you use to get them, because if " +
-                "you have them than you can do whatever you want.");
+                "Money and Power. Everything is buyable with money. Everything is achievable with Power. Everything is");
+        System.out.println(" about money and Power. It doesn’t matter what kind of methods you use to get them, because if ");
+        System.out.println("you have them than you can do whatever you want.");
         System.out.println("Player: " +
                 "YOU ARE DOING ALL THIS JUST FOR MONEY AND POWER?! You are selling the country out, letting people " +
                 "suffer, making everything overpriced so you can get enough money?");
@@ -115,14 +115,19 @@ public class Story {
         System.out.println("Cleric Companion: No Problem.");
         System.out.println("(You dress up, take a look in the weapon chest and go to the first dungeon)");
         System.out.println(" ");
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
-        Inventory startChest =new Inventory();
+        Inventory startChest = new Inventory();
         Player.PlayerStats.playerInventory.fillArmor();
         Player.PlayerStats.playerInventory.fillWeapons();
         startChest.fillWeapons();
         startChest.fillArmor();
-        startChest.addWeaponToInventory(1,14);
-        startChest.addWeaponToInventory(0,0);
+        startChest.addWeaponToInventory(1, 14);
+        startChest.addWeaponToInventory(0, 0);
         startChest.openChest();
         Player.PlayerStats.playerInventory.openInventory();
 

@@ -76,14 +76,15 @@ public class Barbarian {
             System.out.println("Invalid Pick");
         }
     }
-        public  static void barbarianAttackAbilities() {
-        switch (Player.PlayerStats.level){
-            case 1-> System.out.println("[1] Rage");
-            case 2,3,4-> {
+
+    public static void barbarianAttackAbilities() {
+        switch (Player.PlayerStats.level) {
+            case 1 -> System.out.println("[1] Rage");
+            case 2, 3, 4 -> {
                 System.out.println("[1] Rage");
                 System.out.println("[2] Reckless Attack");
             }
-            case 5,6 ->{
+            case 5, 6 -> {
                 System.out.println("[1] Rage");
                 System.out.println("[2] Reckless Attack");
                 System.out.println("[3] Extra Attack");
@@ -96,7 +97,8 @@ public class Barbarian {
                 System.out.println("[4] Feral Instinct");
             }
         }
-        }
+    }
+
     public static int barbarianAbilities() {
         // Abilities
         /*
