@@ -11,51 +11,51 @@ public class Inventory {
     final Weapons[] heavyWeapons = new Weapons[23];
 
 
-  public void fillWeapons() {
-        simpleWeapons[0]=Weapons.club;
-        simpleWeapons[1]=Weapons.dagger;
-        simpleWeapons[2]=Weapons.greatclub;
-        simpleWeapons[3]=Weapons.handaxe;
-        simpleWeapons[4]=Weapons.javelin;
-        simpleWeapons[5]=Weapons.lightHammer;
-        simpleWeapons[6]=Weapons.mace;
-        simpleWeapons[7]=Weapons.quarterStaff;
-        simpleWeapons[8]=Weapons.sickle;
-        simpleWeapons[9]=Weapons.spear;
-        simpleWeapons[10]=Weapons.unarmedStrike;
-        simpleWeapons[11]=Weapons.crossbowLight;
-        simpleWeapons[12]=Weapons.dart;
-        simpleWeapons[13]=Weapons.shortbow;
-        simpleWeapons[14]=Weapons.sling;
-        heavyWeapons[0] =Weapons.battleaxe;
-        heavyWeapons[1] =Weapons.flail;
-        heavyWeapons[2] =Weapons.glaive;
-        heavyWeapons[3] =Weapons.greataxe;
-        heavyWeapons[4] =Weapons.greatsword;
-        heavyWeapons[5] =Weapons.halberd;
-        heavyWeapons[6] =Weapons.lance;
-        heavyWeapons[7] =Weapons.longsword;
-        heavyWeapons[8] =Weapons.maul;
-        heavyWeapons[9] =Weapons.morningstar;
-        heavyWeapons[10] =Weapons.pike;
-        heavyWeapons[11] =Weapons.rapier;
-        heavyWeapons[12] =Weapons.scimitar;
-        heavyWeapons[13] =Weapons.shortsword;
-        heavyWeapons[14] =Weapons.trident;
-        heavyWeapons[15] =Weapons.warPick;
-        heavyWeapons[16] =Weapons.warhammer;
-        heavyWeapons[17] =Weapons.whip;
-        heavyWeapons[18] =Weapons.blowgun;
-        heavyWeapons[19] =Weapons.crossbowHand;
-        heavyWeapons[20] =Weapons.crossbowHeavy;
-        heavyWeapons[21] =Weapons.longbow;
-        heavyWeapons[22] =Weapons.net;
+    public void fillWeapons() {
+        simpleWeapons[0] = Weapons.club;
+        simpleWeapons[1] = Weapons.dagger;
+        simpleWeapons[2] = Weapons.greatclub;
+        simpleWeapons[3] = Weapons.handaxe;
+        simpleWeapons[4] = Weapons.javelin;
+        simpleWeapons[5] = Weapons.lightHammer;
+        simpleWeapons[6] = Weapons.mace;
+        simpleWeapons[7] = Weapons.quarterStaff;
+        simpleWeapons[8] = Weapons.sickle;
+        simpleWeapons[9] = Weapons.spear;
+        simpleWeapons[10] = Weapons.unarmedStrike;
+        simpleWeapons[11] = Weapons.crossbowLight;
+        simpleWeapons[12] = Weapons.dart;
+        simpleWeapons[13] = Weapons.shortbow;
+        simpleWeapons[14] = Weapons.sling;
+        heavyWeapons[0] = Weapons.battleaxe;
+        heavyWeapons[1] = Weapons.flail;
+        heavyWeapons[2] = Weapons.glaive;
+        heavyWeapons[3] = Weapons.greataxe;
+        heavyWeapons[4] = Weapons.greatsword;
+        heavyWeapons[5] = Weapons.halberd;
+        heavyWeapons[6] = Weapons.lance;
+        heavyWeapons[7] = Weapons.longsword;
+        heavyWeapons[8] = Weapons.maul;
+        heavyWeapons[9] = Weapons.morningstar;
+        heavyWeapons[10] = Weapons.pike;
+        heavyWeapons[11] = Weapons.rapier;
+        heavyWeapons[12] = Weapons.scimitar;
+        heavyWeapons[13] = Weapons.shortsword;
+        heavyWeapons[14] = Weapons.trident;
+        heavyWeapons[15] = Weapons.warPick;
+        heavyWeapons[16] = Weapons.warhammer;
+        heavyWeapons[17] = Weapons.whip;
+        heavyWeapons[18] = Weapons.blowgun;
+        heavyWeapons[19] = Weapons.crossbowHand;
+        heavyWeapons[20] = Weapons.crossbowHeavy;
+        heavyWeapons[21] = Weapons.longbow;
+        heavyWeapons[22] = Weapons.net;
 
     }
 
     final Armor[] lightArmor = new Armor[3];
 
-   public void fillArmor() {
+    public void fillArmor() {
 
         lightArmor[0] = Armor.padded;
         lightArmor[1] = Armor.leather;
@@ -72,7 +72,7 @@ public class Inventory {
         heavyArmor[2] = Armor.splint;
         heavyArmor[3] = Armor.plate;
 
-        shield[0]=Armor.shield;
+        shield[0] = Armor.shield;
     }
 
     final Armor[] mediumArmor = new Armor[5];
@@ -143,12 +143,14 @@ public class Inventory {
                 }
             }
         }
-        for (int i = 0; i < weapons.length; i++) {
-            for (int i1 = 0; i1 < weapons[i].length; i1++) {
-                if (inventory[choice].equals(weapons[i][i1].name)) {
-                    equipped[0] = weapons[i][i1].name;
-                    inventory[choice] = null;
-                    break;
+        for (Weapons[] weapon : weapons) {
+            for (Weapons value : weapon) {
+                if (inventory[choice] != null) {
+                    if (inventory[choice].equals(value.name)) {
+                        equipped[0] = value.name;
+                        inventory[choice] = null;
+                        break;
+                    }
                 }
             }
         }
@@ -161,11 +163,13 @@ public class Inventory {
 
         for (int i = 0; i < armors.length; i++) {
             for (int i1 = 0; i1 < armors[i].length; i1++) {
-                if (itemName.equals(armors[i][i1].name)) {
-                    if (itemName.equals(armors[2][i1].name)) {
-                        armorClass = armors[i][i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
-                    } else {
-                        armorClass = armors[i][i1].armorClass;
+                if (itemName != null) {
+                    if (itemName.equals(armors[i][i1].name)) {
+                        if (itemName.equals(armors[2][i1].name)) {
+                            armorClass = armors[i][i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
+                        } else {
+                            armorClass = armors[i][i1].armorClass;
+                        }
                     }
                 }
             }
@@ -179,10 +183,14 @@ public class Inventory {
 
         for (int i = 0; i < weapons.length; i++) {
             for (int i1 = 0; i1 < weapons[i].length; i1++) {
-                if (itemName.equals(weapons[i][i1].name)) {
+                if (itemName != null) {
+                    if (itemName.equals(weapons[i][i1].name)) {
 
-                    damageRange = weapons[i][i1].damageRange;
+                        damageRange = weapons[i][i1].damageRange;
 
+                    }
+                }else {
+                    damageRange="1d1";
                 }
             }
         }
@@ -190,8 +198,8 @@ public class Inventory {
     }
 
     public void openChest() {
-fillWeapons();
-fillArmor();
+        fillWeapons();
+        fillArmor();
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
