@@ -117,6 +117,10 @@ public class Story {
         System.out.println(" ");
 
         Inventory startChest =new Inventory();
+        Player.PlayerStats.playerInventory.fillArmor();
+        Player.PlayerStats.playerInventory.fillWeapons();
+        startChest.fillWeapons();
+        startChest.fillArmor();
         startChest.addWeaponToInventory(1,14);
         startChest.addWeaponToInventory(0,0);
         startChest.openChest();
