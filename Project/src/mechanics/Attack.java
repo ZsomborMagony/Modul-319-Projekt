@@ -55,7 +55,7 @@ public class Attack {
         }
         Player.PlayerStats.playerHpCalculate();
         Leveling.addExp();
-        round=0;
+        round = 0;
     }
 
     public static int diceSelector(int monsterNumber) {//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
@@ -112,7 +112,7 @@ public class Attack {
         } else if (Player.playerChosenClass == 2) {     //Barbarian
             System.out.println("[0] normal attack");
             Barbarian.barbarianAttackAbilities();
-            attackChoice=userInput.nextInt();
+            attackChoice = userInput.nextInt();
             switch (attackChoice) {
                 case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
                         getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));
@@ -177,6 +177,7 @@ public class Attack {
                 System.out.println("you dealt " + attackRoll + " damage");
             } else {
                 System.out.println("you defeated " + enemyName + " you gained " + enemyXp + " xp");
+                Player.PlayerStats.xp += enemyXp;
             }
         } else {
             System.out.println("you missed");
