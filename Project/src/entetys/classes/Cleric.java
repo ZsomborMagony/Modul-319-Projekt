@@ -7,7 +7,7 @@ import mechanics.Dice;
 import java.util.Scanner;
 
 public class Cleric {
-    public static int[] spellSlots = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public static final int[] spellSlots = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     int proficiencyBonus() {
         switch (Player.PlayerStats.level) {

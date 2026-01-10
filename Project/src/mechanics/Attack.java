@@ -11,7 +11,7 @@ import java.util.Scanner;
 //          Attack test = new Attack();
 //          test.fight();
 public class Attack {
-    public static Monsters[] monsterList = {
+    public static final Monsters[] monsterList = {
             Monsters.mimic,//0
             Monsters.animated_armor,//1
             Monsters.twig_blight,//2
@@ -33,7 +33,7 @@ public class Attack {
     static int attackChoice;
 
 
-    public void fight(int monsterNumber) {
+    public void fight(int monsterNumber) { // main fight function
 
         enemyHp = monsterList[monsterNumber].hp;
         enemyName = monsterList[monsterNumber].name;
@@ -55,7 +55,7 @@ public class Attack {
         }
         Player.PlayerStats.playerHpCalculate();
         Leveling.addExp();
-        round=0;
+        round = 0;
     }
 
     public static int diceSelector(int monsterNumber) {//function from monster 1d6+5 to Dice.d(6) or from 2d4 to (Dice.d(4)+Dice.d(4))
@@ -112,7 +112,7 @@ public class Attack {
         } else if (Player.playerChosenClass == 2) {     //Barbarian
             System.out.println("[0] normal attack");
             Barbarian.barbarianAttackAbilities();
-            attackChoice=userInput.nextInt();
+            attackChoice = userInput.nextInt();
             switch (attackChoice) {
                 case 0 -> attack = weaponDieSelector(Player.PlayerStats.playerInventory.
                         getDamageRangeFromEquippedSlot(Player.PlayerStats.playerInventory.getEquipmentValue(0)));
@@ -137,7 +137,7 @@ public class Attack {
         return attack;
     }
 
-    int weaponDieSelector(String damageRange) {
+    int weaponDieSelector(String damageRange) { // phrase from String to int "1d6" = Dice.d(6)
         int damage = 0;
         int amountOfDice = 0;
         int die = 0;
@@ -164,27 +164,20 @@ public class Attack {
 
         int hitOrMiss = Dice.d(20);
         switch (Player.playerChosenClass) {
-            case 0 -> {
-                hitOrMiss += Player.PlayerStats.statModifiers("dexterity");
-            }
-            case 1 -> {
-                hitOrMiss += Player.PlayerStats.statModifiers("charisma");
-            }
-            case 2 -> {
-                hitOrMiss += Player.PlayerStats.statModifiers("strength");
-            }
-            case 3 -> {
-                hitOrMiss += Player.PlayerStats.statModifiers("wisdom");
-            }
+            case 0 -> hitOrMiss += Player.PlayerStats.statModifiers("dexterity");
+            case 1 -> hitOrMiss += Player.PlayerStats.statModifiers("charisma");
+            case 2 -> hitOrMiss += Player.PlayerStats.statModifiers("strength");
+            case 3 -> hitOrMiss += Player.PlayerStats.statModifiers("wisdom");
         }
 
         if (hitOrMiss >= monsterList[monsterNumber].armorClass) {
-            this.enemyHp -= attackRoll;
+            enemyHp -= attackRoll;
 
-            if (this.enemyHp > 0) {
+            if (enemyHp > 0) {
                 System.out.println("you dealt " + attackRoll + " damage");
             } else {
                 System.out.println("you defeated " + enemyName + " you gained " + enemyXp + " xp");
+                Player.PlayerStats.xp += enemyXp;
             }
         } else {
             System.out.println("you missed");
@@ -193,17 +186,11 @@ public class Attack {
 
     public void monsterAttack(int attackRoll) {
         switch (Player.playerChosenClass) {
-            case 0 -> {
-                Monk.unarmoredDefense();
-            }
+            case 0 -> Monk.unarmoredDefense();
 //            case 1->{}
 //            case 2->{}
-            case 3 -> {
-                Barbarian.unarmoredDefense();
-            }
-            default -> {
-                Player.PlayerStats.calculateAC();
-            }
+            case 3 -> Barbarian.unarmoredDefense();
+            default -> Player.PlayerStats.calculateAC();
         }
 
         int hitOrMiss = Dice.d(20);
@@ -223,11 +210,11 @@ public class Attack {
 
     public void deflectAttackMonk(int monsterNumber) {
         int damage = Monk.deflectAttack(diceSelector(monsterNumber), monsterList[monsterNumber].dexterity);
-        if (Monk.reducedDamage == true) {
+        if (Monk.reducedDamage) {
             Player.PlayerStats.hp -= damage;
             System.out.println("you took " + damage + " damage");
         } else {
-            this.enemyHp -= damage;
+            enemyHp -= damage;
             System.out.println("you dealt " + damage + " damage");
         }
     }
