@@ -110,7 +110,6 @@ public class Attack {
         } else if (Player.playerChosenClass == 1) {     //Warlock
 
         } else if (Player.playerChosenClass == 2) {     //Barbarian
-            Barbarian.barbarianAbilities();
 
             attackChoice = Barbarian.barbarianAbilities();
             switch (attackChoice) {
