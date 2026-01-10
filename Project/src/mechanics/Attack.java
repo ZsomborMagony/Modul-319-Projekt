@@ -33,7 +33,7 @@ public class Attack {
     static int attackChoice;
 
 
-    public void fight(int monsterNumber) {
+    public void fight(int monsterNumber) { // main fight function
 
         enemyHp = monsterList[monsterNumber].hp;
         enemyName = monsterList[monsterNumber].name;
@@ -137,7 +137,7 @@ public class Attack {
         return attack;
     }
 
-    int weaponDieSelector(String damageRange) {
+    int weaponDieSelector(String damageRange) { // phrase from String to int "1d6" = Dice.d(6)
         int damage = 0;
         int amountOfDice = 0;
         int die = 0;

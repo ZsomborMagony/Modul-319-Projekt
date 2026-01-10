@@ -131,8 +131,7 @@ public class Inventory {
         int choice;
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
-        fillArmor();
-        fillWeapons();
+
 
         for (Armor[] armor : armors) {
             for (int i1 = 0; i1 < armor.length; i1++) {
@@ -198,8 +197,7 @@ public class Inventory {
     }
 
     public void openChest() {
-        fillWeapons();
-        fillArmor();
+
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
@@ -224,8 +222,7 @@ public class Inventory {
     }
 
     public void addWeaponToInventory(int simpleOrHeavy, int weaponNr) {
-        fillWeapons();
-        fillArmor();
+
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = weapons[simpleOrHeavy][weaponNr].name;

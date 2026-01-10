@@ -62,7 +62,7 @@ public class Player {
 
         public static final Inventory playerInventory = new Inventory();
 
-        public static void rest() {
+        public static void rest() { //long rest
             hp = maxHp;
             Monk.regenKiPoints();
             Barbarian.rageRestTimeCounter = 10;
