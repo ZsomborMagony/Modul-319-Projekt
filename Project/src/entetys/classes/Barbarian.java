@@ -1,9 +1,7 @@
 package entetys.classes;
 
 import entetys.Player;
-import entetys.Weapons;
 import mechanics.Attack;
-import mechanics.Inventory;
 
 import java.util.Scanner;
 
@@ -16,7 +14,7 @@ public class Barbarian {
     public static short rageLeft = 2;
     public static short rageRestTimeCounter;
     public static byte rageDamage = 2;
-    static boolean loopUntilGameEnds = true;
+    static final boolean loopUntilGameEnds = true;
 
 
     // Constructor
@@ -78,16 +76,15 @@ public class Barbarian {
             System.out.println("Invalid Pick");
         }
     }
-        public  static void barbarianAttackAbilities() {
-        switch (Player.PlayerStats.level){
-            case 1-> {
-                System.out.println("[1] Rage");
-            }
-            case 2,3,4-> {
+
+    public static void barbarianAttackAbilities() {
+        switch (Player.PlayerStats.level) {
+            case 1 -> System.out.println("[1] Rage");
+            case 2, 3, 4 -> {
                 System.out.println("[1] Rage");
                 System.out.println("[2] Reckless Attack");
             }
-            case 5,6 ->{
+            case 5, 6 -> {
                 System.out.println("[1] Rage");
                 System.out.println("[2] Reckless Attack");
                 System.out.println("[3] Extra Attack");
@@ -100,7 +97,8 @@ public class Barbarian {
                 System.out.println("[4] Feral Instinct");
             }
         }
-        }
+    }
+
     public static int barbarianAbilities() {
         // Abilities
         /*

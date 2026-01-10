@@ -3,7 +3,7 @@ package entetys;
 
 public class AllClasses {
 
-    public static String[] classes = {
+    public static final String[] classes = {
 
             "Monk",
             "Warlock (WIP)",

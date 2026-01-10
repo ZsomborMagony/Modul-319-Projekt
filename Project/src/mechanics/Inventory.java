@@ -14,8 +14,8 @@ public class Inventory {
     public void fillWeapons() {
         simpleWeapons[0] = Weapons.club;
         simpleWeapons[1] = Weapons.dagger;
-        simpleWeapons[2] = Weapons.greatclub;
-        simpleWeapons[3] = Weapons.handaxe;
+        simpleWeapons[2] = Weapons.greatClub;
+        simpleWeapons[3] = Weapons.handAxe;
         simpleWeapons[4] = Weapons.javelin;
         simpleWeapons[5] = Weapons.lightHammer;
         simpleWeapons[6] = Weapons.mace;
@@ -91,7 +91,7 @@ public class Inventory {
     };
     final String[] inventory = new String[10];
     final String[] equipped = new String[3];//[0] Weapon [1] Armor [2] Shield
-    public int[] money = {0};
+    public final int[] money = {0};
 
 
     public void openInventory() {
@@ -131,14 +131,13 @@ public class Inventory {
         int choice;
         System.out.println("witch Item do you want to equip? (0-9)");
         choice = userInput.nextInt();
-        fillArmor();
-        fillWeapons();
 
-        for (int i = 0; i < armors.length; i++) {
-            for (int i1 = 0; i1 < armors[i].length; i1++) {
-                if (armors[i][i1].name != null) {
-                    if (inventory[choice].equals(armors[i][i1].name)) {
-                        equipped[2] = armors[i][i1].name;
+
+        for (Armor[] armor : armors) {
+            for (int i1 = 0; i1 < armor.length; i1++) {
+                if (armor[i1].name != null) {
+                    if (inventory[choice].equals(armor[i1].name)) {
+                        equipped[2] = armor[i1].name;
                     }
                 }
             }
@@ -161,14 +160,14 @@ public class Inventory {
         int armorClass = 0;
         fillArmor();
 
-        for (int i = 0; i < armors.length; i++) {
-            for (int i1 = 0; i1 < armors[i].length; i1++) {
+        for (Armor[] armor : armors) {
+            for (int i1 = 0; i1 < armor.length; i1++) {
                 if (itemName != null) {
-                    if (itemName.equals(armors[i][i1].name)) {
+                    if (itemName.equals(armor[i1].name)) {
                         if (itemName.equals(armors[2][i1].name)) {
-                            armorClass = armors[i][i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
+                            armorClass = armor[i1].armorClass - Player.PlayerStats.statModifiers("dexterity");
                         } else {
-                            armorClass = armors[i][i1].armorClass;
+                            armorClass = armor[i1].armorClass;
                         }
                     }
                 }
@@ -181,16 +180,16 @@ public class Inventory {
         fillWeapons();
         String damageRange = null;
 
-        for (int i = 0; i < weapons.length; i++) {
-            for (int i1 = 0; i1 < weapons[i].length; i1++) {
+        for (Weapons[] weapon : weapons) {
+            for (int i1 = 0; i1 < weapon.length; i1++) {
                 if (itemName != null) {
-                    if (itemName.equals(weapons[i][i1].name)) {
+                    if (itemName.equals(weapon[i1].name)) {
 
-                        damageRange = weapons[i][i1].damageRange;
+                        damageRange = weapon[i1].damageRange;
 
                     }
-                }else {
-                    damageRange="1d1";
+                } else {
+                    damageRange = "1d1";
                 }
             }
         }
@@ -198,8 +197,7 @@ public class Inventory {
     }
 
     public void openChest() {
-        fillWeapons();
-        fillArmor();
+
         Scanner userInput = new Scanner(System.in);
         System.out.println("Items in inventory:");
         for (String contens : inventory) {
@@ -224,8 +222,7 @@ public class Inventory {
     }
 
     public void addWeaponToInventory(int simpleOrHeavy, int weaponNr) {
-        fillWeapons();
-        fillArmor();
+
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = weapons[simpleOrHeavy][weaponNr].name;

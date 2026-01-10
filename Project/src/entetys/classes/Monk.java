@@ -28,7 +28,7 @@ public class Monk {
         }
     }
 
-    static int levelToAbilitys() {
+    static int levelToAbility() {
         switch (Player.PlayerStats.level) {
             case 1 -> {
                 return 0;
@@ -57,7 +57,7 @@ public class Monk {
 //            "Martial Arts, unarmored Defense, Regen ki Points, Flurry of Blows, Deflect Attack, extra Attack",
 //
 //    };
-    static String[] abilitys = {
+    static final String[] abilitys = {
             "Martial Arts",
             "unarmored Defense",
             "Regen ki Points",
@@ -67,28 +67,28 @@ public class Monk {
     };
 
     public static void attackAbilitys() {
-        if (levelToAbilitys() == 0) {
+        if (levelToAbility() == 0) {
 
             for (int i = 0; i <= 1; i++) {
                 if (i != 1 && i != 2) {
                     System.out.println(abilitys[i] + " ");
                 }
             }
-        } else if (levelToAbilitys() == 1) {
+        } else if (levelToAbility() == 1) {
 
             for (int i = 0; i <= 3; i++) {
                 if (i != 1 && i != 2) {
                     System.out.println(abilitys[i] + " ");
                 }
             }
-        } else if (levelToAbilitys() == 2) {
+        } else if (levelToAbility() == 2) {
 
             for (int i = 0; i <= 4; i++) {
                 if (i != 1 && i != 2) {
                     System.out.println(abilitys[i] + " ");
                 }
             }
-        } else if (levelToAbilitys() == 3) {
+        } else if (levelToAbility() == 3) {
 
             for (int i = 0; i <= 5; i++) {
                 if (i != 1 && i != 2) {
@@ -102,22 +102,22 @@ public class Monk {
     }
 
     public static void abilityOptions() {
-        if (levelToAbilitys() == 0) {
+        if (levelToAbility() == 0) {
 
             for (int i = 0; i <= 1; i++) {
                 System.out.println(abilitys[i] + " ");
             }
-        } else if (levelToAbilitys() == 1) {
+        } else if (levelToAbility() == 1) {
 
             for (int i = 0; i <= 3; i++) {
                 System.out.println(abilitys[i] + " ");
             }
-        } else if (levelToAbilitys() == 2) {
+        } else if (levelToAbility() == 2) {
 
             for (int i = 0; i <= 4; i++) {
                 System.out.println(abilitys[i] + " ");
             }
-        } else if (levelToAbilitys() == 3) {
+        } else if (levelToAbility() == 3) {
 
             for (int i = 0; i <= 5; i++) {
                 System.out.println(abilitys[i] + " ");
@@ -185,13 +185,11 @@ public class Monk {
         int level = Player.PlayerStats.level;
 
 
-            switch (level) {
-                case 1 -> kiPoints = 0;
-                default -> {
-                    kiPoints = level;
-
-                }
-            }
+        if (level == 1) {
+            kiPoints = 0;
+        } else {
+            kiPoints = level;
+        }
 
         return kiPoints;
     }
@@ -204,11 +202,10 @@ public class Monk {
             if (level >= 10) {
 
                 attack = martialArts() + martialArts() + martialArts();
-                Monk.kiPoints -= 1;
             } else {
                 attack = martialArts() + martialArts();
-                Monk.kiPoints -= 1;
             }
+            Monk.kiPoints -= 1;
         } else {
             System.out.println("you don't have enough Ki Points");
         }
