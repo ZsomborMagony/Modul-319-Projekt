@@ -126,8 +126,9 @@ public class Story {
         Player.PlayerStats.playerInventory.fillWeapons();
         startChest.fillWeapons();
         startChest.fillArmor();
-        startChest.addWeaponToInventory(1, 14);
+        startChest.addWeaponToInventory(1, 13);
         startChest.addWeaponToInventory(0, 0);
+        startChest.addArmorToInventory(0,1);
         startChest.openChest();
         Player.PlayerStats.playerInventory.openInventory();
 

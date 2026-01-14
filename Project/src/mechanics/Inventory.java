@@ -235,6 +235,7 @@ public class Inventory {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 inventory[i] = armors[armorType][armorNr].name;
+                break;
             }
         }
     }
